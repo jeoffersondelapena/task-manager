@@ -10,6 +10,8 @@ import SwiftUI
 struct AddEditTaskSheet: View {
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject private var viewModel: TasksListViewModel
+    
     @State private var title = ""
     
     @State private var addDeadline = false
@@ -75,9 +77,7 @@ struct AddEditTaskSheet: View {
             
             switch type {
             case .add:
-                Button("Save") {
-                    
-                }
+                Button("Save", action: addTask)
                 .frame(maxWidth: .infinity)
                 
             case .modify:
@@ -121,6 +121,18 @@ struct AddEditTaskSheet: View {
             deadline = task.deadline ?? Date()
             description = task.description ?? ""
         }
+    }
+    
+    private func addTask() {
+        viewModel.addTask(
+            Task(
+                id: nil,
+                title: title,
+                description: description,
+                deadline: deadline,
+                isCompleted: false
+            )
+        )
     }
 }
 

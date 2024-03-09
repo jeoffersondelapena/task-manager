@@ -32,4 +32,18 @@ class TasksListViewModel: ObservableObject {
             state.isLoading = false
         }
     }
+    
+    func addTask(_ task: Task) {
+        state.isLoading = true
+        
+        switch repository.addTask(task) {
+        case .success:
+            state.activeSheet = .constant(nil)
+            getTasks()
+        case .failure(let error):
+            state.error = .constant(error)
+        }
+        
+        state.isLoading = false
+    }
 }
