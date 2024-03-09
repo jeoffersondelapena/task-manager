@@ -52,6 +52,9 @@
 		40A1CEA22B9C2B9D00A7FD17 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				40A1CEB12B9C387200A7FD17 /* Repositories */,
+				40A1CEAF2B9C382E00A7FD17 /* Remote */,
+				40A1CEB02B9C383300A7FD17 /* Local */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -59,6 +62,8 @@
 		40A1CEA32B9C2BA500A7FD17 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				40A1CEB32B9C396900A7FD17 /* Models */,
+				40A1CEB22B9C396300A7FD17 /* Repositories */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -113,6 +118,73 @@
 				40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */,
 			);
 			path = "Completed Tasks List Screen";
+			sourceTree = "<group>";
+		};
+		40A1CEAF2B9C382E00A7FD17 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB62B9C39B900A7FD17 /* DTOs */,
+				40A1CEB72B9C39BE00A7FD17 /* Services */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		40A1CEB02B9C383300A7FD17 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB42B9C399F00A7FD17 /* DTOs */,
+				40A1CEB52B9C39A700A7FD17 /* Services */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		40A1CEB12B9C387200A7FD17 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		40A1CEB22B9C396300A7FD17 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		40A1CEB32B9C396900A7FD17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40A1CEB42B9C399F00A7FD17 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		40A1CEB52B9C39A700A7FD17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		40A1CEB62B9C39B900A7FD17 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		40A1CEB72B9C39BE00A7FD17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		40CAEA322B9C121000E6EABD = {
