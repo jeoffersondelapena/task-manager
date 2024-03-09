@@ -15,6 +15,9 @@ struct TasksListScreen: View {
             if viewModel.state.isLoading {
                 ProgressView()
                 
+            } else if viewModel.state.tasks.isEmpty  {
+                Text("No tasks yet")
+                
             } else {
                 List(viewModel.state.tasks) { task in
                     TaskItem(task: task)
@@ -25,9 +28,39 @@ struct TasksListScreen: View {
             }
         }
         .navigationTitle("Tasks List")
+        .toolbar {
+            Button(
+                action: {
+                    viewModel.state.activeSheet = .constant(.add)
+                },
+                label: {
+                    Image(systemName: "plus")
+                }
+            )
+        }
+        .sheet(
+            isPresented: .constant(viewModel.state.activeSheet.wrappedValue != nil),
+            onDismiss: {
+                viewModel.state.activeSheet = .constant(nil)
+            },
+            content: {
+                AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
+                    .presentationDetents([.medium])
+            }
+        )
     }
 }
 
 #Preview {
-    TasksListScreen()
+    NavigationStack {
+        TasksListScreen()
+            .environmentObject(
+                TasksListViewModel(
+                    repository: TaskRepositoryImpl(
+                        remoteService: TaskRemoteService(),
+                        localService: TaskLocalService()
+                    )
+                )
+            )
+    }
 }

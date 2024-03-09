@@ -15,6 +15,9 @@ struct CompletedTasksListScreen: View {
             if viewModel.state.isLoading {
                 ProgressView()
                 
+            } else if viewModel.state.tasks.isEmpty  {
+                Text("No completed tasks yet")
+                
             } else {
                 List(viewModel.state.completedTasks) { task in
                     TaskItem(task: task, allowStrikethrough: false)
@@ -31,5 +34,15 @@ struct CompletedTasksListScreen: View {
 }
 
 #Preview {
-    CompletedTasksListScreen()
+    NavigationStack {
+        CompletedTasksListScreen()
+            .environmentObject(
+                TasksListViewModel(
+                    repository: TaskRepositoryImpl(
+                        remoteService: TaskRemoteService(),
+                        localService: TaskLocalService()
+                    )
+                )
+            )
+    }
 }

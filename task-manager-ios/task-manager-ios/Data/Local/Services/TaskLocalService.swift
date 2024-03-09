@@ -15,6 +15,18 @@ class TaskLocalService: BaseService {
         }
     }
     
+    func addTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, Error> {
+        serviceCall {
+            let realm = try Realm()
+            
+            try realm.write {
+                realm.add(taskLocalDTO)
+            }
+            
+            return .success(())
+        }
+    }
+    
     func setTasks(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
         serviceCall {
             let realm = try Realm()
