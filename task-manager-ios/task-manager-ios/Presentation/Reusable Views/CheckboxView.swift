@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct CheckboxView: View {
-    @Binding var isChecked: Bool
+    let isChecked: Bool
+    let onTap: () -> Void
 
     var body: some View {
         Image(systemName: isChecked ? "checkmark.square.fill" : "square")
             .foregroundColor(isChecked ? Color(UIColor.systemBlue) : Color.secondary)
-            .onTapGesture {
-                isChecked.toggle()
-            }
+            .onTapGesture(perform: onTap)
     }
 }
 
 #Preview {
-    CheckboxView(isChecked: .constant(true))
+    CheckboxView(isChecked: true) {}
 }

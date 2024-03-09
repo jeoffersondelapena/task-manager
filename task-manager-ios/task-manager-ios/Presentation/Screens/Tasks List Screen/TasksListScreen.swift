@@ -14,6 +14,9 @@ struct TasksListScreen: View {
         List(viewModel.state.tasks) { task in
             TaskItem(task: task)
         }
+        .refreshable {
+            viewModel.getTasks()
+        }
         .navigationTitle("Tasks List")
     }
 }

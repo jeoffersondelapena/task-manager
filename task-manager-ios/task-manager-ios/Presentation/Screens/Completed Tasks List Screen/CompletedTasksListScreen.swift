@@ -15,6 +15,9 @@ struct CompletedTasksListScreen: View {
             TaskItem(task: task, allowStrikethrough: false)
         }
         .listStyle(.plain)
+        .refreshable {
+            viewModel.getTasks()
+        }
         .navigationTitle("Completed Tasks List")
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskItem: View {
-    @State var task: Task
+    let task: Task
     let allowStrikethrough: Bool
     
     init(task: Task, allowStrikethrough: Bool = true) {
@@ -43,7 +43,7 @@ struct TaskItem: View {
             
             Spacer()
             
-            CheckboxView(isChecked: $task.isCompleted)
+            CheckboxView(isChecked: task.isCompleted) {}
         }
     }
 }
