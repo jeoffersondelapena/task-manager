@@ -45,6 +45,62 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40A1CEA22B9C2B9D00A7FD17 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		40A1CEA32B9C2BA500A7FD17 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		40A1CEA42B9C2BAB00A7FD17 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEA52B9C2C2F00A7FD17 /* Screens */,
+				40A1CEA62B9C2C3900A7FD17 /* Resources */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		40A1CEA52B9C2C2F00A7FD17 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEA72B9C2E5200A7FD17 /* Main */,
+				40A1CEA82B9C2E5E00A7FD17 /* Tasks List Screen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		40A1CEA62B9C2C3900A7FD17 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40CAEA422B9C121100E6EABD /* Assets.xcassets */,
+				40CAEA442B9C121100E6EABD /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		40A1CEA72B9C2E5200A7FD17 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				40CAEA402B9C121000E6EABD /* ContentView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		40A1CEA82B9C2E5E00A7FD17 /* Tasks List Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Tasks List Screen";
+			sourceTree = "<group>";
+		};
 		40CAEA322B9C121000E6EABD = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */,
-				40CAEA402B9C121000E6EABD /* ContentView.swift */,
-				40CAEA422B9C121100E6EABD /* Assets.xcassets */,
-				40CAEA442B9C121100E6EABD /* Preview Content */,
+				40A1CEA22B9C2B9D00A7FD17 /* Data */,
+				40A1CEA32B9C2BA500A7FD17 /* Domain */,
+				40A1CEA42B9C2BAB00A7FD17 /* Presentation */,
 			);
 			path = "task-manager-ios";
 			sourceTree = "<group>";
@@ -88,7 +144,6 @@
 				AC15017DEBEB516D71292017 /* Pods-task-manager-ios.debug.xcconfig */,
 				2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -323,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Presentation/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZB4WP9Z9N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -353,7 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Presentation/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZB4WP9Z9N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
