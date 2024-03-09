@@ -8,7 +8,7 @@
 import Foundation
 
 class TasksListViewModel: ObservableObject {
-    @Published var tasksListState = TasksListState()
+    @Published var state = TasksListState()
     
     private let repository: TaskRepository
     
@@ -17,15 +17,15 @@ class TasksListViewModel: ObservableObject {
     }
     
     func getTasks() {
-        tasksListState.isLoading = true
+        state.isLoading = true
         
         switch repository.getTasks() {
         case .success(let tasks):
-            tasksListState.tasks = tasks
+            state.tasks = tasks
         case .failure(let error):
-            tasksListState.error = error
+            state.error = error
         }
         
-        tasksListState.isLoading = false
+        state.isLoading = false
     }
 }

@@ -18,7 +18,7 @@ struct TasksListScreen: View {
     var body: some View {
         VStack {
             Text("Tasks List Screen")
-            List(viewModel.tasksListState.tasks) { task in
+            List(viewModel.state.tasks) { task in
                 Text(task.title)
             }
         }
