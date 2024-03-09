@@ -9,11 +9,7 @@ import Foundation
 
 class TaskRemoteService {
     func getTasks() -> Result<[TaskRemoteDTO], Error> {
-        // This is where you'll add the logic for fetching items from a remote source
-        
-        // Since fetching from network is not included in the requirements,
-        // I'll just set this to always return dummy data
-        .success([
+        let taskRemoteDTOs = /* someNetworkCall() */ [
             TaskRemoteDTO(
                 id: "abc",
                 title: "Dummy Title 1",
@@ -28,6 +24,7 @@ class TaskRemoteService {
                 deadline: nil,
                 isCompleted: false
             ),
-        ])
+        ]
+        return .success(taskRemoteDTOs)
     }
 }

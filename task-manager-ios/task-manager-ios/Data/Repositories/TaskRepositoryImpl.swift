@@ -18,14 +18,7 @@ class TaskRepositoryImpl: TaskRepository {
     }
     
     func getTasks() -> Result<[Task], Error> {
-        // In a repository pattern, this is where you’ll add the condition
-        // to decide whether to fetch the data from a remote source or from a local source (Realm)
-
-        // That condition is most likely if the user is connected to the internet or not
-
-        // In our case, since fetching from network and syncing with cache is not included in the requirements,
-        // I’ll just set it to always fetch the data from the local source (Realm)
-        if (true) {
+        if /* !hasInternetConnection */ true {
             switch localService.getTasks() {
             case .success(let taskLocalDTOs):
                 return .success(taskLocalDTOs.toDomain())
