@@ -11,11 +11,18 @@ struct TasksListScreen: View {
     @EnvironmentObject private var viewModel: TasksListViewModel
     
     var body: some View {
-        List(viewModel.state.tasks) { task in
-            TaskItem(task: task)
-        }
-        .refreshable {
-            viewModel.getTasks()
+        Group {
+            if viewModel.state.isLoading {
+                ProgressView()
+                
+            } else {
+                List(viewModel.state.tasks) { task in
+                    TaskItem(task: task)
+                }
+                .refreshable {
+                    viewModel.getTasks(isFromSwipeRefresh: true)
+                }
+            }
         }
         .navigationTitle("Tasks List")
     }
