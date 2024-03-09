@@ -12,14 +12,14 @@ class TaskRemoteService {
         let taskRemoteDTOs = /* someNetworkCall() */ [
             TaskRemoteDTO(
                 id: "abc",
-                title: "Dummy Title 1",
-                description: "Dummy Description",
+                title: "Dummy title 1",
+                description: "Dummy description",
                 deadline: Date(),
                 isCompleted: true
             ),
             TaskRemoteDTO(
                 id: "def",
-                title: "Dummy Title 2",
+                title: "Dummy title 2",
                 description: nil,
                 deadline: nil,
                 isCompleted: false
