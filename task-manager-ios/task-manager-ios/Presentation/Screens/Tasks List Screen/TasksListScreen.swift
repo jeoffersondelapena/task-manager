@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct TasksListScreen: View {
-    @StateObject private var viewModel = TasksListViewModel(
-        repository: TaskRepositoryImpl(
-            remoteService: TaskRemoteService(),
-            localService: TaskLocalService()
-        )
-    )
+    @EnvironmentObject private var viewModel: TasksListViewModel
     
     var body: some View {
-        List(viewModel.state.tasks) { task in
-            TaskItem(task: task)
+        Group {
+            if viewModel.state.isLoading {
+                ProgressView()
+                
+            } else {
+                List(viewModel.state.tasks) { task in
+                    TaskItem(task: task)
+                }
+                .refreshable {
+                    viewModel.getTasks(isFromSwipeRefresh: true)
+                }
+            }
         }
-        .navigationTitle("Tasks List Screen")
-        .onAppear {
-            viewModel.getTasks()
-        }
+        .navigationTitle("Tasks List")
     }
 }
 

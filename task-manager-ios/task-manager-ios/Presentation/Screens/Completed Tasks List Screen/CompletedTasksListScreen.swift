@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct CompletedTasksListScreen: View {
+    @EnvironmentObject private var viewModel: TasksListViewModel
+    
     var body: some View {
-        Text("Completed Tasks List Screen")
+        Group {
+            if viewModel.state.isLoading {
+                ProgressView()
+                
+            } else {
+                List(viewModel.state.completedTasks) { task in
+                    TaskItem(task: task, allowStrikethrough: false)
+                }
+                .listStyle(.plain)
+                .refreshable {
+                    viewModel.getTasks(isFromSwipeRefresh: true)
+                }
+            }
+        }
+        .navigationTitle("Completed Tasks List")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

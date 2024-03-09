@@ -16,16 +16,20 @@ class TasksListViewModel: ObservableObject {
         self.repository = repository
     }
     
-    func getTasks() {
-        state.isLoading = true
+    func getTasks(isFromSwipeRefresh: Bool = false) {
+        if !isFromSwipeRefresh {
+            state.isLoading = true
+        }
         
         switch repository.getTasks() {
         case .success(let tasks):
             state.tasks = tasks
         case .failure(let error):
-            state.error = error
+            state.error = .constant(error)
         }
         
-        state.isLoading = false
+        if !isFromSwipeRefresh {
+            state.isLoading = false
+        }
     }
 }
