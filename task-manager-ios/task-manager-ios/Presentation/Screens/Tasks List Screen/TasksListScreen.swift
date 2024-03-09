@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct TasksListScreen: View {
+    @StateObject private var viewModel = TasksListViewModel(
+        repository: TaskRepositoryImpl(
+            remoteService: TaskRemoteService(),
+            localService: TaskLocalService()
+        )
+    )
+    
     var body: some View {
-        Text("Tasks List Screen")
+        VStack {
+            Text("Tasks List Screen")
+            List(viewModel.tasksListState.tasks) { task in
+                Text(task.title)
+            }
+        }
+        .onAppear {
+            viewModel.getTasks()
+        }
     }
 }
 
