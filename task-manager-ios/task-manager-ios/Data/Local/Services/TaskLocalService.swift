@@ -20,7 +20,7 @@ class TaskLocalService {
         }
     }
     
-    func setTasks(taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
+    func setTasks(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
         do {
             let realm = try Realm()
             try realm.write {

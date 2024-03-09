@@ -44,19 +44,17 @@ class TaskRepositoryImpl: TaskRepository {
     }
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
-        var taskLocalDTOs: [TaskLocalDTO] = []
-        
-        taskRemoteDTOs.forEach { taskRemoteDTO in
-            let taskLocalDTO = TaskLocalDTO()
-            
-            taskLocalDTO.title = taskRemoteDTO.title
-            taskLocalDTO.desc = taskRemoteDTO.description
-            taskLocalDTO.deadline = taskRemoteDTO.deadline
-            taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
-            
-            taskLocalDTOs.append(taskLocalDTO)
-        }
-        
-        _ = localService.setTasks(taskLocalDTOs: taskLocalDTOs)
+        _ = localService.setTasks(
+            taskRemoteDTOs.map { taskRemoteDTO in
+                let taskLocalDTO = TaskLocalDTO()
+                
+                taskLocalDTO.title = taskRemoteDTO.title
+                taskLocalDTO.desc = taskRemoteDTO.description
+                taskLocalDTO.deadline = taskRemoteDTO.deadline
+                taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
+                
+                return taskLocalDTO
+            }
+        )
     }
 }
