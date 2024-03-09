@@ -11,14 +11,18 @@
 		40CAEA412B9C121000E6EABD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CAEA402B9C121000E6EABD /* ContentView.swift */; };
 		40CAEA432B9C121100E6EABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CAEA422B9C121100E6EABD /* Assets.xcassets */; };
 		40CAEA462B9C121100E6EABD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CAEA452B9C121100E6EABD /* Preview Assets.xcassets */; };
+		8C727CC77F8629E60EA66193 /* Pods_task_manager_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB4F20C805A496CD85EA7B0 /* Pods_task_manager_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BB4F20C805A496CD85EA7B0 /* Pods_task_manager_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_task_manager_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-manager-ios.release.xcconfig"; path = "Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios.release.xcconfig"; sourceTree = "<group>"; };
 		40CAEA3B2B9C121000E6EABD /* task-manager-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-manager-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task_manager_iosApp.swift; sourceTree = "<group>"; };
 		40CAEA402B9C121000E6EABD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		40CAEA422B9C121100E6EABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40CAEA452B9C121100E6EABD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC15017DEBEB516D71292017 /* Pods-task-manager-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-manager-ios.debug.xcconfig"; path = "Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +30,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C727CC77F8629E60EA66193 /* Pods_task_manager_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		344A70FB08AB5D78717AE917 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BB4F20C805A496CD85EA7B0 /* Pods_task_manager_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		40CAEA322B9C121000E6EABD = {
 			isa = PBXGroup;
 			children = (
 				40CAEA3D2B9C121000E6EABD /* task-manager-ios */,
 				40CAEA3C2B9C121000E6EABD /* Products */,
+				ED0FBB47A4A3073CC8C75FE9 /* Pods */,
+				344A70FB08AB5D78717AE917 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		ED0FBB47A4A3073CC8C75FE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC15017DEBEB516D71292017 /* Pods-task-manager-ios.debug.xcconfig */,
+				2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40CAEA492B9C121100E6EABD /* Build configuration list for PBXNativeTarget "task-manager-ios" */;
 			buildPhases = (
+				6D62104F59C506224E0A9FC5 /* [CP] Check Pods Manifest.lock */,
 				40CAEA372B9C121000E6EABD /* Sources */,
 				40CAEA382B9C121000E6EABD /* Frameworks */,
 				40CAEA392B9C121000E6EABD /* Resources */,
@@ -131,6 +157,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D62104F59C506224E0A9FC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-task-manager-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40CAEA372B9C121000E6EABD /* Sources */ = {
@@ -266,6 +317,7 @@
 		};
 		40CAEA4A2B9C121100E6EABD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC15017DEBEB516D71292017 /* Pods-task-manager-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +347,7 @@
 		};
 		40CAEA4B2B9C121100E6EABD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
