@@ -21,8 +21,8 @@ struct TaskItem: View {
     }
     
     var body: some View {
-        return HStack(spacing: 4) {
-            VStack(alignment: .leading, spacing: 4) {
+        return HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(task.title)
                     .font(.headline)
                     .strikethrough(showStrikethrough)
