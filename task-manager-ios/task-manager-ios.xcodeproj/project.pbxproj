@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40A1CEAA2B9C31E300A7FD17 /* TasksListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */; };
+		40A1CEAE2B9C323E00A7FD17 /* CompletedTasksListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */; };
+		40A1CEB92B9C3AF900A7FD17 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEB82B9C3AF900A7FD17 /* Task.swift */; };
+		40A1CEBD2B9C3C3C00A7FD17 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEBC2B9C3C3C00A7FD17 /* TaskRepository.swift */; };
+		40A1CEBF2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEBE2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift */; };
+		40A1CEC12B9C3D8500A7FD17 /* TaskLocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC02B9C3D8500A7FD17 /* TaskLocalService.swift */; };
+		40A1CEC32B9C3DBC00A7FD17 /* TaskLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC22B9C3DBC00A7FD17 /* TaskLocalDTO.swift */; };
+		40A1CEC82B9C478700A7FD17 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */; };
+		40A1CECA2B9C482A00A7FD17 /* TasksListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */; };
+		40A1CECC2B9C515000A7FD17 /* TaskRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */; };
+		40A1CECE2B9C523700A7FD17 /* TaskRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */; };
 		40CAEA3F2B9C121000E6EABD /* task_manager_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */; };
 		40CAEA412B9C121000E6EABD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CAEA402B9C121000E6EABD /* ContentView.swift */; };
 		40CAEA432B9C121100E6EABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CAEA422B9C121100E6EABD /* Assets.xcassets */; };
@@ -17,6 +28,17 @@
 /* Begin PBXFileReference section */
 		2BB4F20C805A496CD85EA7B0 /* Pods_task_manager_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_task_manager_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-manager-ios.release.xcconfig"; path = "Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios.release.xcconfig"; sourceTree = "<group>"; };
+		40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListScreen.swift; sourceTree = "<group>"; };
+		40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksListScreen.swift; sourceTree = "<group>"; };
+		40A1CEB82B9C3AF900A7FD17 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		40A1CEBC2B9C3C3C00A7FD17 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		40A1CEBE2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryImpl.swift; sourceTree = "<group>"; };
+		40A1CEC02B9C3D8500A7FD17 /* TaskLocalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocalService.swift; sourceTree = "<group>"; };
+		40A1CEC22B9C3DBC00A7FD17 /* TaskLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocalDTO.swift; sourceTree = "<group>"; };
+		40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
+		40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListState.swift; sourceTree = "<group>"; };
+		40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteDTO.swift; sourceTree = "<group>"; };
+		40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteService.swift; sourceTree = "<group>"; };
 		40CAEA3B2B9C121000E6EABD /* task-manager-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-manager-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task_manager_iosApp.swift; sourceTree = "<group>"; };
 		40CAEA402B9C121000E6EABD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +67,153 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40A1CEA22B9C2B9D00A7FD17 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB12B9C387200A7FD17 /* Repositories */,
+				40A1CEAF2B9C382E00A7FD17 /* Remote */,
+				40A1CEB02B9C383300A7FD17 /* Local */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		40A1CEA32B9C2BA500A7FD17 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB32B9C396900A7FD17 /* Models */,
+				40A1CEB22B9C396300A7FD17 /* Repositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		40A1CEA42B9C2BAB00A7FD17 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEA52B9C2C2F00A7FD17 /* Screens */,
+				40A1CEA62B9C2C3900A7FD17 /* Resources */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		40A1CEA52B9C2C2F00A7FD17 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEA72B9C2E5200A7FD17 /* Main */,
+				40A1CEA82B9C2E5E00A7FD17 /* Tasks List Screen */,
+				40A1CEAB2B9C31EC00A7FD17 /* Completed Tasks List Screen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		40A1CEA62B9C2C3900A7FD17 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40CAEA422B9C121100E6EABD /* Assets.xcassets */,
+				40CAEA442B9C121100E6EABD /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		40A1CEA72B9C2E5200A7FD17 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				40CAEA402B9C121000E6EABD /* ContentView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		40A1CEA82B9C2E5E00A7FD17 /* Tasks List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */,
+				40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */,
+				40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */,
+			);
+			path = "Tasks List Screen";
+			sourceTree = "<group>";
+		};
+		40A1CEAB2B9C31EC00A7FD17 /* Completed Tasks List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */,
+			);
+			path = "Completed Tasks List Screen";
+			sourceTree = "<group>";
+		};
+		40A1CEAF2B9C382E00A7FD17 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB62B9C39B900A7FD17 /* DTOs */,
+				40A1CEB72B9C39BE00A7FD17 /* Services */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		40A1CEB02B9C383300A7FD17 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB42B9C399F00A7FD17 /* DTOs */,
+				40A1CEB52B9C39A700A7FD17 /* Services */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		40A1CEB12B9C387200A7FD17 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEBE2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		40A1CEB22B9C396300A7FD17 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEBC2B9C3C3C00A7FD17 /* TaskRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		40A1CEB32B9C396900A7FD17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEB82B9C3AF900A7FD17 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40A1CEB42B9C399F00A7FD17 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEC22B9C3DBC00A7FD17 /* TaskLocalDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		40A1CEB52B9C39A700A7FD17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEC02B9C3D8500A7FD17 /* TaskLocalService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		40A1CEB62B9C39B900A7FD17 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		40A1CEB72B9C39BE00A7FD17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		40CAEA322B9C121000E6EABD = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */,
-				40CAEA402B9C121000E6EABD /* ContentView.swift */,
-				40CAEA422B9C121100E6EABD /* Assets.xcassets */,
-				40CAEA442B9C121100E6EABD /* Preview Content */,
+				40A1CEA22B9C2B9D00A7FD17 /* Data */,
+				40A1CEA32B9C2BA500A7FD17 /* Domain */,
+				40A1CEA42B9C2BAB00A7FD17 /* Presentation */,
 			);
 			path = "task-manager-ios";
 			sourceTree = "<group>";
@@ -88,7 +257,6 @@
 				AC15017DEBEB516D71292017 /* Pods-task-manager-ios.debug.xcconfig */,
 				2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,6 +271,7 @@
 				40CAEA372B9C121000E6EABD /* Sources */,
 				40CAEA382B9C121000E6EABD /* Frameworks */,
 				40CAEA392B9C121000E6EABD /* Resources */,
+				EA3C9A48A8AF4996FA10DA90 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +350,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA3C9A48A8AF4996FA10DA90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -188,8 +374,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A1CECC2B9C515000A7FD17 /* TaskRemoteDTO.swift in Sources */,
+				40A1CEC12B9C3D8500A7FD17 /* TaskLocalService.swift in Sources */,
+				40A1CEBD2B9C3C3C00A7FD17 /* TaskRepository.swift in Sources */,
+				40A1CECA2B9C482A00A7FD17 /* TasksListState.swift in Sources */,
+				40A1CEC32B9C3DBC00A7FD17 /* TaskLocalDTO.swift in Sources */,
+				40A1CEAE2B9C323E00A7FD17 /* CompletedTasksListScreen.swift in Sources */,
+				40A1CEAA2B9C31E300A7FD17 /* TasksListScreen.swift in Sources */,
+				40A1CEB92B9C3AF900A7FD17 /* Task.swift in Sources */,
+				40A1CECE2B9C523700A7FD17 /* TaskRemoteService.swift in Sources */,
 				40CAEA412B9C121000E6EABD /* ContentView.swift in Sources */,
+				40A1CEBF2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift in Sources */,
 				40CAEA3F2B9C121000E6EABD /* task_manager_iosApp.swift in Sources */,
+				40A1CEC82B9C478700A7FD17 /* TasksListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +430,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -296,7 +493,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -323,7 +520,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Presentation/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZB4WP9Z9N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -353,7 +550,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"task-manager-ios/Presentation/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZB4WP9Z9N6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
