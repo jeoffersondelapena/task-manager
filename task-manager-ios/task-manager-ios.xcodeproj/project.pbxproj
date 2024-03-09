@@ -18,6 +18,10 @@
 		40A1CECA2B9C482A00A7FD17 /* TasksListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */; };
 		40A1CECC2B9C515000A7FD17 /* TaskRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */; };
 		40A1CECE2B9C523700A7FD17 /* TaskRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */; };
+		40A1CED12B9C840C00A7FD17 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED02B9C840C00A7FD17 /* BaseService.swift */; };
+		40A1CED62B9C90F100A7FD17 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED52B9C90F100A7FD17 /* TaskItem.swift */; };
+		40A1CED82B9C940900A7FD17 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED72B9C940900A7FD17 /* CheckboxView.swift */; };
+		40A1CEDC2B9C988F00A7FD17 /* DateTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEDB2B9C988F00A7FD17 /* DateTimeManager.swift */; };
 		40CAEA3F2B9C121000E6EABD /* task_manager_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */; };
 		40CAEA412B9C121000E6EABD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CAEA402B9C121000E6EABD /* ContentView.swift */; };
 		40CAEA432B9C121100E6EABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CAEA422B9C121100E6EABD /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 		40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListState.swift; sourceTree = "<group>"; };
 		40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteDTO.swift; sourceTree = "<group>"; };
 		40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteService.swift; sourceTree = "<group>"; };
+		40A1CED02B9C840C00A7FD17 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		40A1CED52B9C90F100A7FD17 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		40A1CED72B9C940900A7FD17 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		40A1CEDB2B9C988F00A7FD17 /* DateTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeManager.swift; sourceTree = "<group>"; };
 		40CAEA3B2B9C121000E6EABD /* task-manager-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-manager-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40CAEA3E2B9C121000E6EABD /* task_manager_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task_manager_iosApp.swift; sourceTree = "<group>"; };
 		40CAEA402B9C121000E6EABD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +90,7 @@
 			children = (
 				40A1CEB32B9C396900A7FD17 /* Models */,
 				40A1CEB22B9C396300A7FD17 /* Repositories */,
+				40A1CED92B9C986300A7FD17 /* Utilities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -89,6 +98,7 @@
 		40A1CEA42B9C2BAB00A7FD17 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				40A1CED22B9C908800A7FD17 /* Reusable Views */,
 				40A1CEA52B9C2C2F00A7FD17 /* Screens */,
 				40A1CEA62B9C2C3900A7FD17 /* Resources */,
 			);
@@ -193,6 +203,7 @@
 		40A1CEB52B9C39A700A7FD17 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				40A1CECF2B9C840000A7FD17 /* Base */,
 				40A1CEC02B9C3D8500A7FD17 /* TaskLocalService.swift */,
 			);
 			path = Services;
@@ -212,6 +223,39 @@
 				40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		40A1CECF2B9C840000A7FD17 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CED02B9C840C00A7FD17 /* BaseService.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		40A1CED22B9C908800A7FD17 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CED72B9C940900A7FD17 /* CheckboxView.swift */,
+				40A1CED52B9C90F100A7FD17 /* TaskItem.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		40A1CED92B9C986300A7FD17 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEDA2B9C987600A7FD17 /* Helpers */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		40A1CEDA2B9C987600A7FD17 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEDB2B9C988F00A7FD17 /* DateTimeManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		40CAEA322B9C121000E6EABD = {
@@ -375,9 +419,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				40A1CECC2B9C515000A7FD17 /* TaskRemoteDTO.swift in Sources */,
+				40A1CED62B9C90F100A7FD17 /* TaskItem.swift in Sources */,
 				40A1CEC12B9C3D8500A7FD17 /* TaskLocalService.swift in Sources */,
 				40A1CEBD2B9C3C3C00A7FD17 /* TaskRepository.swift in Sources */,
 				40A1CECA2B9C482A00A7FD17 /* TasksListState.swift in Sources */,
+				40A1CEDC2B9C988F00A7FD17 /* DateTimeManager.swift in Sources */,
+				40A1CED12B9C840C00A7FD17 /* BaseService.swift in Sources */,
 				40A1CEC32B9C3DBC00A7FD17 /* TaskLocalDTO.swift in Sources */,
 				40A1CEAE2B9C323E00A7FD17 /* CompletedTasksListScreen.swift in Sources */,
 				40A1CEAA2B9C31E300A7FD17 /* TasksListScreen.swift in Sources */,
@@ -387,6 +434,7 @@
 				40A1CEBF2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift in Sources */,
 				40CAEA3F2B9C121000E6EABD /* task_manager_iosApp.swift in Sources */,
 				40A1CEC82B9C478700A7FD17 /* TasksListViewModel.swift in Sources */,
+				40A1CED82B9C940900A7FD17 /* CheckboxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

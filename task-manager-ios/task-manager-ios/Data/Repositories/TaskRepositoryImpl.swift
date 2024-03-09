@@ -18,14 +18,7 @@ class TaskRepositoryImpl: TaskRepository {
     }
     
     func getTasks() -> Result<[Task], Error> {
-        // In a repository pattern, this is where you’ll add the condition
-        // to decide whether to fetch the data from a remote source or from a local source (Realm)
-
-        // That condition is most likely if the user is connected to the internet or not
-
-        // In our case, since fetching from network and syncing with cache is not included in the requirements,
-        // I’ll just set it to always fetch the data from the local source (Realm)
-        if (true) {
+        if /* !hasInternetConnection */ true {
             switch localService.getTasks() {
             case .success(let taskLocalDTOs):
                 return .success(taskLocalDTOs.toDomain())
@@ -44,19 +37,17 @@ class TaskRepositoryImpl: TaskRepository {
     }
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
-        var taskLocalDTOs: [TaskLocalDTO] = []
-        
-        taskRemoteDTOs.forEach { taskRemoteDTO in
-            let taskLocalDTO = TaskLocalDTO()
-            
-            taskLocalDTO.title = taskRemoteDTO.title
-            taskLocalDTO.desc = taskRemoteDTO.description
-            taskLocalDTO.deadline = taskRemoteDTO.deadline
-            taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
-            
-            taskLocalDTOs.append(taskLocalDTO)
-        }
-        
-        _ = localService.setTasks(taskLocalDTOs: taskLocalDTOs)
+        _ = localService.setTasks(
+            taskRemoteDTOs.map { taskRemoteDTO in
+                let taskLocalDTO = TaskLocalDTO()
+                
+                taskLocalDTO.title = taskRemoteDTO.title
+                taskLocalDTO.desc = taskRemoteDTO.description
+                taskLocalDTO.deadline = taskRemoteDTO.deadline
+                taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
+                
+                return taskLocalDTO
+            }
+        )
     }
 }

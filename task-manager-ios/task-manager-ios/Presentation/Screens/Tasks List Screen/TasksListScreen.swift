@@ -16,12 +16,10 @@ struct TasksListScreen: View {
     )
     
     var body: some View {
-        VStack {
-            Text("Tasks List Screen")
-            List(viewModel.tasksListState.tasks) { task in
-                Text(task.title)
-            }
+        List(viewModel.state.tasks) { task in
+            TaskItem(task: task)
         }
+        .navigationTitle("Tasks List Screen")
         .onAppear {
             viewModel.getTasks()
         }

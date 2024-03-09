@@ -12,5 +12,13 @@ struct Task: Identifiable {
     let title: String
     let description: String?
     let deadline: Date?
-    let isCompleted: Bool
+    var isCompleted: Bool
+    
+    static let sample = Task(
+        id: "abc",
+        title: "Dummy title",
+        description: "Dummy description",
+        deadline: Date(),
+        isCompleted: true
+    )
 }
