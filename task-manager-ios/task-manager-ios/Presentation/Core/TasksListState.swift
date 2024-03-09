@@ -9,6 +9,13 @@ import Foundation
 
 struct TasksListState {
     var tasks: [Task] = []
+    var completedTasks: [Task] {
+        tasks.filter { task in
+            task.isCompleted
+        }
+    }
+    
     var isLoading = false
+    
     var error: Error?
 }

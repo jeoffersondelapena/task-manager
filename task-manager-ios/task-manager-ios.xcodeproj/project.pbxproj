@@ -98,6 +98,7 @@
 		40A1CEA42B9C2BAB00A7FD17 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				40A1CEDD2B9C9E9300A7FD17 /* Core */,
 				40A1CED22B9C908800A7FD17 /* Reusable Views */,
 				40A1CEA52B9C2C2F00A7FD17 /* Screens */,
 				40A1CEA62B9C2C3900A7FD17 /* Resources */,
@@ -135,8 +136,6 @@
 		40A1CEA82B9C2E5E00A7FD17 /* Tasks List Screen */ = {
 			isa = PBXGroup;
 			children = (
-				40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */,
-				40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */,
 				40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */,
 			);
 			path = "Tasks List Screen";
@@ -256,6 +255,15 @@
 				40A1CEDB2B9C988F00A7FD17 /* DateTimeManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		40A1CEDD2B9C9E9300A7FD17 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				40A1CEC92B9C482A00A7FD17 /* TasksListState.swift */,
+				40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		40CAEA322B9C121000E6EABD = {

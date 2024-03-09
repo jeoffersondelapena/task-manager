@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct TasksListScreen: View {
-    @StateObject private var viewModel = TasksListViewModel(
-        repository: TaskRepositoryImpl(
-            remoteService: TaskRemoteService(),
-            localService: TaskLocalService()
-        )
-    )
+    @EnvironmentObject private var viewModel: TasksListViewModel
     
     var body: some View {
         List(viewModel.state.tasks) { task in
             TaskItem(task: task)
         }
-        .navigationTitle("Tasks List Screen")
-        .onAppear {
-            viewModel.getTasks()
-        }
+        .navigationTitle("Tasks List")
     }
 }
 

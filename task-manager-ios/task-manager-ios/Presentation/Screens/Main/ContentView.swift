@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = TasksListViewModel(
+        repository: TaskRepositoryImpl(
+            remoteService: TaskRemoteService(),
+            localService: TaskLocalService()
+        )
+    )
+    
     var body: some View {
         TabView {
             NavigationStack {
                 TasksListScreen()
+                    .environmentObject(viewModel)
             }
             .tabItem {
                 Label(
@@ -22,6 +30,7 @@ struct ContentView: View {
             
             NavigationStack {
                 CompletedTasksListScreen()
+                    .environmentObject(viewModel)
             }
             .tabItem {
                 Label(
@@ -29,6 +38,9 @@ struct ContentView: View {
                     systemImage: "checklist.checked"
                 )
             }
+        }
+        .onAppear {
+            viewModel.getTasks()
         }
     }
 }
