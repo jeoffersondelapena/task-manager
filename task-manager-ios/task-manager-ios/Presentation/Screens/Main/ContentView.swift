@@ -9,13 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                TasksListScreen()
+            }
+            .tabItem {
+                Label(
+                    "Tasks",
+                    systemImage: "checklist"
+                )
+            }
+            
+            NavigationStack {
+                CompletedTasksListScreen()
+            }
+            .tabItem {
+                Label(
+                    "Completed Tasks",
+                    systemImage: "checklist.checked"
+                )
+            }
         }
-        .padding()
     }
 }
 
