@@ -42,6 +42,14 @@ struct ContentView: View {
         .onAppear {
             viewModel.getTasks()
         }
+        .alert(
+            viewModel.state.error.wrappedValue?.localizedDescription ?? "An error has occurred.",
+            isPresented: .constant(viewModel.state.error.wrappedValue != nil)
+        ) {
+            Button("OK") {
+                viewModel.state.error = .constant(nil)
+            }
+        }
     }
 }
 

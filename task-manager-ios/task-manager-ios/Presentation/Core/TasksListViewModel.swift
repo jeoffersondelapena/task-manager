@@ -25,7 +25,7 @@ class TasksListViewModel: ObservableObject {
         case .success(let tasks):
             state.tasks = tasks
         case .failure(let error):
-            state.error = error
+            state.error = .constant(error)
         }
         
         if !isFromSwipeRefresh {

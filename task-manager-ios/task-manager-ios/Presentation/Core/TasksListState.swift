@@ -5,7 +5,7 @@
 //  Created by Jeofferson Dela Peña on 3/9/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct TasksListState {
     var tasks: [Task] = []
@@ -17,5 +17,5 @@ struct TasksListState {
     
     var isLoading = false
     
-    var error: Error?
+    var error: Binding<Error?> = .constant(nil)
 }
