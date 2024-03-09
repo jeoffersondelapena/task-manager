@@ -13,6 +13,7 @@ struct AddEditTaskSheet: View {
     @EnvironmentObject private var viewModel: TasksListViewModel
     
     @State private var title = ""
+    @State private var titleErrorMessage = ""
     
     @State private var addDeadline = false
     @State private var deadline = Date()
@@ -49,10 +50,21 @@ struct AddEditTaskSheet: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            TextField("Task title", text: $title)
-                .textFieldStyle(.roundedBorder)
-                .opacity(fieldsOpacity)
-                .disabled(isDisabledFields)
+            VStack(alignment: .leading, spacing: 0) {
+                TextField("Task title", text: $title)
+                    .textFieldStyle(.roundedBorder)
+                    .opacity(fieldsOpacity)
+                    .disabled(isDisabledFields)
+                
+                if titleErrorMessage.isNotBlank() {
+                    Text(titleErrorMessage)
+                        .font(.caption)
+                        .foregroundColor(Color(UIColor.systemRed))
+                        .onChange(of: title) {
+                            titleErrorMessage = ""
+                        }
+                }
+            }
             
             Toggle("Add deadline", isOn: $addDeadline)
                 .opacity(fieldsOpacity)
@@ -124,14 +136,23 @@ struct AddEditTaskSheet: View {
     }
     
     private func addTask() {
-        viewModel.addTask(
-            Task(
-                id: nil,
-                title: title,
-                description: description,
-                deadline: deadline,
-                isCompleted: false
-            )
+        guard let task = validateTask() else {
+            return
+        }
+        viewModel.addTask(task)
+    }
+    
+    private func validateTask() -> Task? {
+        guard title.isNotBlank() else {
+            titleErrorMessage = "Title should not be blank"
+            return nil
+        }
+        return Task(
+            id: nil,
+            title: title,
+            description: description.isBlank() ? nil : description,
+            deadline: !addDeadline ? nil : deadline,
+            isCompleted: false
         )
     }
 }
