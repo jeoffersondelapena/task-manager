@@ -50,6 +50,10 @@ struct AddEditTaskSheet: View {
     
     var body: some View {
         VStack(spacing: 8) {
+            if viewModel.state.isLoading {
+                ProgressView()
+            }
+            
             VStack(alignment: .leading, spacing: 0) {
                 TextField("Task title", text: $title)
                     .textFieldStyle(.roundedBorder)
