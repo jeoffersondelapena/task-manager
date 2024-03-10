@@ -51,4 +51,25 @@ class TaskLocalService: BaseService {
         
         return .success(())
     }
+    
+    func editTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, Error> {
+        serviceCall {
+            let realm = try Realm()
+            
+            let taskLocalDTOToUpdate = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
+            
+            guard let taskLocalDTOToUpdate = taskLocalDTOToUpdate else {
+                return addTask(taskLocalDTO)
+            }
+            
+            try realm.write {
+                taskLocalDTOToUpdate.title = taskLocalDTO.title
+                taskLocalDTOToUpdate.desc = taskLocalDTO.desc
+                taskLocalDTOToUpdate.deadline = taskLocalDTO.deadline
+                taskLocalDTOToUpdate.isCompleted = taskLocalDTO.isCompleted
+            }
+            
+            return .success(())
+        }
+    }
 }

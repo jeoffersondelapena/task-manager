@@ -107,10 +107,8 @@ struct AddEditTaskSheet: View {
                         .frame(maxWidth: .infinity)
                         
                     } else {
-                        Button("Save") {
-                            
-                        }
-                        .frame(maxWidth: .infinity)
+                        Button("Save", action: editTask)
+                            .frame(maxWidth: .infinity)
                     }
                     
                     Button("Delete") {
@@ -129,6 +127,7 @@ struct AddEditTaskSheet: View {
                 return
             }
             title = task.title
+            addDeadline = task.deadline != nil
             deadline = task.deadline ?? Date()
             description = task.description ?? ""
         }
@@ -141,18 +140,36 @@ struct AddEditTaskSheet: View {
         viewModel.addTask(task)
     }
     
+    private func editTask() {
+        guard let task = validateTask() else {
+            return
+        }
+        viewModel.editTask(task)
+    }
+    
     private func validateTask() -> Task? {
         guard title.isNotBlank() else {
             titleErrorMessage = "Title should not be blank"
             return nil
         }
-        return Task(
-            id: nil,
-            title: title,
-            description: description.isBlank() ? nil : description,
-            deadline: !addDeadline ? nil : deadline,
-            isCompleted: false
-        )
+        switch type {
+        case .add:
+            return Task(
+                id: nil,
+                title: title,
+                description: description.isBlank() ? nil : description,
+                deadline: !addDeadline ? nil : deadline,
+                isCompleted: false
+            )
+        case .modify(let task):
+            return Task(
+                id: task.id,
+                title: title,
+                description: description.isBlank() ? nil : description,
+                deadline: !addDeadline ? nil : deadline,
+                isCompleted: task.isCompleted
+            )
+        }
     }
 }
 

@@ -17,7 +17,7 @@ class TaskLocalDTO: Object {
     
     func toDomain() -> Task {
         Task(
-            id:_id.stringValue,
+            id: _id.stringValue,
             title: title,
             description: desc,
             deadline: deadline,
@@ -28,6 +28,9 @@ class TaskLocalDTO: Object {
     static func toDTO(_ task: Task) -> TaskLocalDTO {
         let taskLocalDTO = TaskLocalDTO()
         
+        if let taskID = task.id, let id = try? ObjectId(string: taskID) {
+            taskLocalDTO._id = id
+        }
         taskLocalDTO.title = task.title
         taskLocalDTO.desc = task.description
         taskLocalDTO.deadline = task.deadline
