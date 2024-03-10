@@ -21,10 +21,6 @@ struct CompletedTasksListScreen: View {
             } else {
                 List(viewModel.state.completedTasks) { task in
                     TaskItem(task: task, allowStrikethrough: false)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            viewModel.state.activeSheet = .constant(.modify(task))
-                        }
                 }
                 .listStyle(.plain)
                 .refreshable {

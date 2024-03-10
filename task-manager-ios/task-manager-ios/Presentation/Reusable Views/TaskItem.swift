@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TaskItem: View {
+    @EnvironmentObject private var viewModel: TasksListViewModel
+    
     let task: Task
     let allowStrikethrough: Bool
     
@@ -44,6 +46,10 @@ struct TaskItem: View {
             Spacer()
             
             CheckboxView(isChecked: task.isCompleted) {}
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.state.activeSheet = .constant(.modify(task))
         }
     }
 }
