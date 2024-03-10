@@ -266,8 +266,8 @@
 		40A1CEDD2B9C9E9300A7FD17 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				40A1CEDE2B9CA94400A7FD17 /* TasksListState.swift */,
 				40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */,
+				40A1CEDE2B9CA94400A7FD17 /* TasksListState.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
