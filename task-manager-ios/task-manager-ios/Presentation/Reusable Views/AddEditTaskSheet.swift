@@ -79,8 +79,8 @@ struct AddEditTaskSheet: View {
             .disabled(isDisabledDatePicker)
             
             TextField("Task description", text: $description, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
                 .lineLimit(5...10)
+                .textFieldStyle(.roundedBorder)
                 .opacity(fieldsOpacity)
                 .disabled(isDisabledFields)
             

@@ -34,16 +34,6 @@ struct CompletedTasksListScreen: View {
         }
         .navigationTitle("Completed Tasks List")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(
-            isPresented: .constant(viewModel.state.activeSheet.wrappedValue != nil),
-            onDismiss: {
-                viewModel.state.activeSheet = .constant(nil)
-            },
-            content: {
-                AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
-                    .presentationDetents([.medium])
-            }
-        )
     }
 }
 
