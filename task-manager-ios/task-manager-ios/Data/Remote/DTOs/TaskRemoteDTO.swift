@@ -38,7 +38,7 @@ class TaskRemoteDTO {
         )
     }
     
-    static func toDTO(_ task: Task) -> TaskRemoteDTO {
+    static func toData(_ task: Task) -> TaskRemoteDTO {
         TaskRemoteDTO(
             id: task.id,
             title: task.title,
@@ -48,9 +48,9 @@ class TaskRemoteDTO {
         )
     }
     
-    static func toDTO(_ tasks: [Task]) -> [TaskRemoteDTO] {
+    static func toData(_ tasks: [Task]) -> [TaskRemoteDTO] {
         tasks.map { task in
-            toDTO(task)
+            toData(task)
         }
     }
 }

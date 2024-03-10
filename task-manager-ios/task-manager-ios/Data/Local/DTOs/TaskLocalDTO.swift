@@ -25,7 +25,7 @@ class TaskLocalDTO: Object {
         )
     }
     
-    static func toDTO(_ task: Task) -> TaskLocalDTO {
+    static func toData(_ task: Task) -> TaskLocalDTO {
         let taskLocalDTO = TaskLocalDTO()
         
         if let taskID = task.id, let id = try? ObjectId(string: taskID) {
@@ -39,9 +39,9 @@ class TaskLocalDTO: Object {
         return taskLocalDTO
     }
     
-    static func toDTO(_ tasks: [Task]) -> [TaskLocalDTO] {
+    static func toData(_ tasks: [Task]) -> [TaskLocalDTO] {
         tasks.map { task in
-            toDTO(task)
+            toData(task)
         }
     }
 }

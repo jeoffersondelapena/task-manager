@@ -38,7 +38,7 @@ class TaskRepositoryImpl: TaskRepository {
     
     func addTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
-            return localService.addTask(TaskLocalDTO.toDTO(task))
+            return localService.addTask(TaskLocalDTO.toData(task))
         } else {
             // Network logic here...
         }
@@ -46,7 +46,7 @@ class TaskRepositoryImpl: TaskRepository {
     
     func editTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
-            return localService.editTask(TaskLocalDTO.toDTO(task))
+            return localService.editTask(TaskLocalDTO.toData(task))
         } else {
             // Network logic here...
         }
@@ -54,7 +54,7 @@ class TaskRepositoryImpl: TaskRepository {
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
         _ = localService.addTask(
-            TaskLocalDTO.toDTO(taskRemoteDTOs.toDomain())
+            TaskLocalDTO.toData(taskRemoteDTOs.toDomain())
         )
     }
 }
