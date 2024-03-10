@@ -73,7 +73,6 @@ struct AddEditTaskSheet: View {
             DatePicker(
                 "Deadline",
                 selection: $deadline,
-                in: Date.now...,
                 displayedComponents: .date
             )
             .opacity(datePickerOpacity)

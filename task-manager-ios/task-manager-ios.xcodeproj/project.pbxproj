@@ -141,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */,
-				40A1CEE02B9CBDF400A7FD17 /* AddEditTaskSheet.swift */,
 			);
 			path = "Tasks List Screen";
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 			children = (
 				40A1CED72B9C940900A7FD17 /* CheckboxView.swift */,
 				40A1CED52B9C90F100A7FD17 /* TaskItem.swift */,
+				40A1CEE02B9CBDF400A7FD17 /* AddEditTaskSheet.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";

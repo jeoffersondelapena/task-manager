@@ -21,6 +21,10 @@ struct CompletedTasksListScreen: View {
             } else {
                 List(viewModel.state.completedTasks) { task in
                     TaskItem(task: task, allowStrikethrough: false)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewModel.state.activeSheet = .constant(.modify(task))
+                        }
                 }
                 .listStyle(.plain)
                 .refreshable {
@@ -30,6 +34,16 @@ struct CompletedTasksListScreen: View {
         }
         .navigationTitle("Completed Tasks List")
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(
+            isPresented: .constant(viewModel.state.activeSheet.wrappedValue != nil),
+            onDismiss: {
+                viewModel.state.activeSheet = .constant(nil)
+            },
+            content: {
+                AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
+                    .presentationDetents([.medium])
+            }
+        )
     }
 }
 
