@@ -12,6 +12,7 @@ struct task_manager_iosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }

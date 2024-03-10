@@ -13,7 +13,7 @@ struct CheckboxView: View {
 
     var body: some View {
         Image(systemName: isChecked ? "checkmark.square.fill" : "square")
-            .foregroundColor(isChecked ? Color(UIColor.systemBlue) : Color.secondary)
+            .foregroundColor(isChecked ? Color.accentColor : Color.secondary)
             .onTapGesture(perform: onTap)
     }
 }
