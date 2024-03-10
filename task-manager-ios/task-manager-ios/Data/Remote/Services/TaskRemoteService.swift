@@ -8,7 +8,7 @@
 import Foundation
 
 class TaskRemoteService {
-    func getTasks() -> Result<[TaskRemoteDTO], Error> {
+    func getTasks() -> Result<[TaskRemoteDTO], TaskManagerError> {
         // let taskRemoteDTOs = Network call here...
         let taskRemoteDTOs = [
             TaskRemoteDTO(

@@ -54,7 +54,7 @@ struct ContentView: View {
             }
         )
         .alert(
-            viewModel.state.error.wrappedValue?.localizedDescription ?? "An error has occurred.",
+            viewModel.state.error.wrappedValue?.description ?? "An error has occurred.",
             isPresented: .constant(viewModel.state.error.wrappedValue != nil)
         ) {
             Button("OK") {

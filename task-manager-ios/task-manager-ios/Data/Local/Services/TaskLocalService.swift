@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class TaskLocalService: BaseService {
-    func getTasks() -> Result<[TaskLocalDTO], Error> {
+    func getTasks() -> Result<[TaskLocalDTO], TaskManagerError> {
         serviceCall {
             let taskLocalDTOs = Array((try Realm()).objects(TaskLocalDTO.self).sorted(by: \.deadline))
             
@@ -24,7 +24,7 @@ class TaskLocalService: BaseService {
         }
     }
     
-    func addTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, Error> {
+    func addTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
         serviceCall {
             let realm = try Realm()
             
@@ -36,8 +36,8 @@ class TaskLocalService: BaseService {
         }
     }
     
-    func addTask(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
-        var error: Error?
+    func addTask(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, TaskManagerError> {
+        var error: TaskManagerError?
         
         taskLocalDTOs.forEach { taskLocalDTO in
             if case .failure(let e) = addTask(taskLocalDTO) {
@@ -52,14 +52,14 @@ class TaskLocalService: BaseService {
         return .success(())
     }
     
-    func editTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, Error> {
+    func editTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
         serviceCall {
             let realm = try Realm()
             
             let taskLocalDTOToUpdate = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
             
             guard let taskLocalDTOToUpdate = taskLocalDTOToUpdate else {
-                return addTask(taskLocalDTO)
+                return .failure(.taskNotFound)
             }
             
             try realm.write {

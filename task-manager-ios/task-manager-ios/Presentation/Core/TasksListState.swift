@@ -24,5 +24,5 @@ struct TasksListState {
     
     var activeSheet: Binding<SheetType?> = .constant(nil)
     
-    var error: Binding<Error?> = .constant(nil)
+    var error: Binding<TaskManagerError?> = .constant(nil)
 }

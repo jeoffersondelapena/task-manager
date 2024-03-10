@@ -17,7 +17,7 @@ class TaskRepositoryImpl: TaskRepository {
         self.localService = localService
     }
     
-    func getTasks() -> Result<[Task], Error> {
+    func getTasks() -> Result<[Task], TaskManagerError> {
         if /* !hasInternetConnection */ true {
             switch localService.getTasks() {
             case .success(let taskLocalDTOs):
@@ -36,7 +36,7 @@ class TaskRepositoryImpl: TaskRepository {
         }
     }
     
-    func addTask(_ task: Task) -> Result<Void, Error> {
+    func addTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
             return localService.addTask(TaskLocalDTO.toDTO(task))
         } else {
@@ -44,7 +44,7 @@ class TaskRepositoryImpl: TaskRepository {
         }
     }
     
-    func editTask(_ task: Task) -> Result<Void, Error> {
+    func editTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
             return localService.editTask(TaskLocalDTO.toDTO(task))
         } else {

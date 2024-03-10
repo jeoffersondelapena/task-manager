@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TaskRepository {
-    func getTasks() -> Result<[Task], Error>
-    func addTask(_ task: Task) -> Result<Void, Error>
-    func editTask(_ task: Task) -> Result<Void, Error>
+    func getTasks() -> Result<[Task], TaskManagerError>
+    func addTask(_ task: Task) -> Result<Void, TaskManagerError>
+    func editTask(_ task: Task) -> Result<Void, TaskManagerError>
 }
