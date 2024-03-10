@@ -10,7 +10,7 @@ import RealmSwift
 
 class TaskLocalService: BaseService {
     func getTasks() -> Result<[TaskLocalDTO], TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let taskLocalDTOs = Array((try Realm()).objects(TaskLocalDTO.self).sorted(by: \.deadline))
             
             let taskLocalDTOsWithDeadline = taskLocalDTOs.filter { taskLocalDTO in
@@ -25,7 +25,7 @@ class TaskLocalService: BaseService {
     }
     
     func addTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let realm = try Realm()
             
             try realm.write {
@@ -53,7 +53,7 @@ class TaskLocalService: BaseService {
     }
     
     func editTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let realm = try Realm()
             
             let taskLocalDTOToUpdate = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
@@ -72,4 +72,20 @@ class TaskLocalService: BaseService {
             return .success(())
         }
     }
+    
+//    func deleteTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
+//        handleErrors {
+//            let realm = try Realm()
+//            
+//            let taskLocalDTOToUpdate = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
+//            
+//            guard let taskLocalDTOToUpdate = taskLocalDTOToUpdate else {
+//                return .failure(.taskNotFound)
+//            }
+//            
+//            try realm.write {
+//                <#code#>
+//            }
+//        }
+//    }
 }

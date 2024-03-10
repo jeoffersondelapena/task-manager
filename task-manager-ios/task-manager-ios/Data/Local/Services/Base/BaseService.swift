@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseService {
-    func serviceCall<T>(_ callFunction: () throws -> Result<T, TaskManagerError>) -> Result<T, TaskManagerError> {
+    func handleErrors<T>(_ callFunction: () throws -> Result<T, TaskManagerError>) -> Result<T, TaskManagerError> {
         do {
             return try callFunction()
         } catch let error {
