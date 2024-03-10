@@ -11,7 +11,17 @@ import RealmSwift
 class TaskLocalService: BaseService {
     func getTasks() -> Result<[TaskLocalDTO], Error> {
         serviceCall {
-            .success(Array((try Realm()).objects(TaskLocalDTO.self)))
+            let tasks = (try Realm()).objects(TaskLocalDTO.self).sorted(by: \.deadline)
+            
+            let tasksWithDeadline = tasks.where { task in
+                task.deadline != nil
+            }
+            let tasksWithoutDeadline = tasks.where { task in
+                task.deadline == nil
+            }
+            
+            
+            return .success(Array(tasksWithDeadline) + Array(tasksWithoutDeadline))
         }
     }
     
