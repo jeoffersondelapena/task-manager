@@ -50,6 +50,7 @@ struct ContentView: View {
             content: {
                 AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
                     .presentationDetents([.medium])
+                    .environmentObject(viewModel)
             }
         )
         .alert(

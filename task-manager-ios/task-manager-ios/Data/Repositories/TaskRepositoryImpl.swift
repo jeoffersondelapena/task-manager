@@ -52,7 +52,7 @@ class TaskRepositoryImpl: TaskRepository {
     }
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
-        _ = localService.setTasks(
+        _ = localService.addTask(
             taskRemoteDTOs.map { taskRemoteDTO in
                 let taskLocalDTO = TaskLocalDTO()
                 

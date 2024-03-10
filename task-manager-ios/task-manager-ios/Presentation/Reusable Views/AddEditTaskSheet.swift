@@ -158,4 +158,5 @@ struct AddEditTaskSheet: View {
 
 #Preview {
     AddEditTaskSheet(type: .modify(Task.sample))
+        .environmentObject(TasksListViewModel.sample)
 }

@@ -46,4 +46,11 @@ class TasksListViewModel: ObservableObject {
         
         state.isLoading = false
     }
+    
+    static let sample = TasksListViewModel(
+        repository: TaskRepositoryImpl(
+            remoteService: TaskRemoteService(),
+            localService: TaskLocalService()
+        )
+    )
 }

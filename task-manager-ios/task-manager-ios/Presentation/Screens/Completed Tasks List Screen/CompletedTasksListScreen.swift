@@ -40,13 +40,6 @@ struct CompletedTasksListScreen: View {
 #Preview {
     NavigationStack {
         CompletedTasksListScreen()
-            .environmentObject(
-                TasksListViewModel(
-                    repository: TaskRepositoryImpl(
-                        remoteService: TaskRemoteService(),
-                        localService: TaskLocalService()
-                    )
-                )
-            )
+            .environmentObject(TasksListViewModel.sample)
     }
 }

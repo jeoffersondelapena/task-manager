@@ -36,15 +36,19 @@ class TaskLocalService: BaseService {
         }
     }
     
-    func setTasks(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
-        serviceCall {
-            let realm = try Realm()
-            
-            try realm.write {
-                realm.add(taskLocalDTOs)
+    func addTask(_ taskLocalDTOs: [TaskLocalDTO]) -> Result<Void, Error> {
+        var error: Error?
+        
+        taskLocalDTOs.forEach { taskLocalDTO in
+            if case .failure(let e) = addTask(taskLocalDTO) {
+                error = e
             }
-            
-            return .success(())
         }
+        
+        if let error = error {
+            return .failure(error)
+        }
+        
+        return .success(())
     }
 }
