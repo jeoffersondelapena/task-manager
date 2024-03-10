@@ -24,6 +24,23 @@ class TaskLocalDTO: Object {
             isCompleted: isCompleted
         )
     }
+    
+    static func toDTO(_ task: Task) -> TaskLocalDTO {
+        let taskLocalDTO = TaskLocalDTO()
+        
+        taskLocalDTO.title = task.title
+        taskLocalDTO.desc = task.description
+        taskLocalDTO.deadline = task.deadline
+        taskLocalDTO.isCompleted = task.isCompleted
+        
+        return taskLocalDTO
+    }
+    
+    static func toDTO(_ tasks: [Task]) -> [TaskLocalDTO] {
+        tasks.map { task in
+            toDTO(task)
+        }
+    }
 }
 
 extension Array<TaskLocalDTO> {

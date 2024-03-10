@@ -38,14 +38,7 @@ class TaskRepositoryImpl: TaskRepository {
     
     func addTask(_ task: Task) -> Result<Void, Error> {
         if /* !hasInternetConnection */ true {
-            let taskLocalDTO = TaskLocalDTO()
-            
-            taskLocalDTO.title = task.title
-            taskLocalDTO.desc = task.description
-            taskLocalDTO.deadline = task.deadline
-            taskLocalDTO.isCompleted = task.isCompleted
-            
-            return localService.addTask(taskLocalDTO)
+            return localService.addTask(TaskLocalDTO.toDTO(task))
         } else {
             // Network logic here...
         }
@@ -53,16 +46,7 @@ class TaskRepositoryImpl: TaskRepository {
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
         _ = localService.addTask(
-            taskRemoteDTOs.map { taskRemoteDTO in
-                let taskLocalDTO = TaskLocalDTO()
-                
-                taskLocalDTO.title = taskRemoteDTO.title
-                taskLocalDTO.desc = taskRemoteDTO.description
-                taskLocalDTO.deadline = taskRemoteDTO.deadline
-                taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
-                
-                return taskLocalDTO
-            }
+            TaskLocalDTO.toDTO(taskRemoteDTOs.toDomain())
         )
     }
 }
