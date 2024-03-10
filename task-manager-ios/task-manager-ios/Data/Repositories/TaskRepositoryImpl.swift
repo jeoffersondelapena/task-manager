@@ -17,7 +17,7 @@ class TaskRepositoryImpl: TaskRepository {
         self.localService = localService
     }
     
-    func getTasks() -> Result<[Task], Error> {
+    func getTasks() -> Result<[Task], TaskManagerError> {
         if /* !hasInternetConnection */ true {
             switch localService.getTasks() {
             case .success(let taskLocalDTOs):
@@ -36,33 +36,25 @@ class TaskRepositoryImpl: TaskRepository {
         }
     }
     
-    func addTask(_ task: Task) -> Result<Void, Error> {
+    func addTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
-            let taskLocalDTO = TaskLocalDTO()
-            
-            taskLocalDTO.title = task.title
-            taskLocalDTO.desc = task.description
-            taskLocalDTO.deadline = task.deadline
-            taskLocalDTO.isCompleted = task.isCompleted
-            
-            return localService.addTask(taskLocalDTO)
+            return localService.addTask(TaskLocalDTO.toData(task))
+        } else {
+            // Network logic here...
+        }
+    }
+    
+    func editTask(_ task: Task) -> Result<Void, TaskManagerError> {
+        if /* !hasInternetConnection */ true {
+            return localService.editTask(TaskLocalDTO.toData(task))
         } else {
             // Network logic here...
         }
     }
     
     private func cacheTasks(_ taskRemoteDTOs: [TaskRemoteDTO]) {
-        _ = localService.setTasks(
-            taskRemoteDTOs.map { taskRemoteDTO in
-                let taskLocalDTO = TaskLocalDTO()
-                
-                taskLocalDTO.title = taskRemoteDTO.title
-                taskLocalDTO.desc = taskRemoteDTO.description
-                taskLocalDTO.deadline = taskRemoteDTO.deadline
-                taskLocalDTO.isCompleted = taskRemoteDTO.isCompleted
-                
-                return taskLocalDTO
-            }
+        _ = localService.addTask(
+            TaskLocalDTO.toData(taskRemoteDTOs.toDomain())
         )
     }
 }

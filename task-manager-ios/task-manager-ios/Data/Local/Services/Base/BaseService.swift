@@ -8,11 +8,11 @@
 import Foundation
 
 class BaseService {
-    func serviceCall<T>(_ callFunction: () throws -> Result<T, Error>) -> Result<T, Error> {
+    func serviceCall<T>(_ callFunction: () throws -> Result<T, TaskManagerError>) -> Result<T, TaskManagerError> {
         do {
             return try callFunction()
-        } catch let error as NSError {
-            return .failure(error)
+        } catch let error {
+            return .failure(.generic(error.localizedDescription))
         }
     }
 }

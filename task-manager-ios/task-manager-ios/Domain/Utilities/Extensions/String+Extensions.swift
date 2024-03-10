@@ -18,14 +18,14 @@ extension String {
 }
 
 extension Optional<String> {
-    func isBlankOrNull() -> Bool {
+    func isNullOrBlank() -> Bool {
         guard let value = self else {
             return true
         }
         return value.isBlank()
     }
     
-    func isNotBlankNorNull() -> Bool {
-        !isBlankOrNull()
+    func isNotNullNorBlank() -> Bool {
+        !isNullOrBlank()
     }
 }

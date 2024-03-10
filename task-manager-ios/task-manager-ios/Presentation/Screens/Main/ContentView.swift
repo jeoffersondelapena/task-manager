@@ -42,8 +42,19 @@ struct ContentView: View {
         .onAppear {
             viewModel.getTasks()
         }
+        .sheet(
+            isPresented: .constant(viewModel.state.activeSheet.wrappedValue != nil),
+            onDismiss: {
+                viewModel.state.activeSheet = .constant(nil)
+            },
+            content: {
+                AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
+                    .presentationDetents([.medium])
+                    .environmentObject(viewModel)
+            }
+        )
         .alert(
-            viewModel.state.error.wrappedValue?.localizedDescription ?? "An error has occurred.",
+            viewModel.state.error.wrappedValue?.description ?? "An error has occurred.",
             isPresented: .constant(viewModel.state.error.wrappedValue != nil)
         ) {
             Button("OK") {

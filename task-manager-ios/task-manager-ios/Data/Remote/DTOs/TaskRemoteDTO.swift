@@ -37,6 +37,22 @@ class TaskRemoteDTO {
             isCompleted: isCompleted
         )
     }
+    
+    static func toData(_ task: Task) -> TaskRemoteDTO {
+        TaskRemoteDTO(
+            id: task.id,
+            title: task.title,
+            description: task.description,
+            deadline: task.deadline,
+            isCompleted: task.isCompleted
+        )
+    }
+    
+    static func toData(_ tasks: [Task]) -> [TaskRemoteDTO] {
+        tasks.map { task in
+            toData(task)
+        }
+    }
 }
 
 extension Array<TaskRemoteDTO> {

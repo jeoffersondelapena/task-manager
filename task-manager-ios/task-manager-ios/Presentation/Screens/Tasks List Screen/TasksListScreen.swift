@@ -42,29 +42,12 @@ struct TasksListScreen: View {
                 }
             )
         }
-        .sheet(
-            isPresented: .constant(viewModel.state.activeSheet.wrappedValue != nil),
-            onDismiss: {
-                viewModel.state.activeSheet = .constant(nil)
-            },
-            content: {
-                AddEditTaskSheet(type: viewModel.state.activeSheet.wrappedValue ?? .add)
-                    .presentationDetents([.medium])
-            }
-        )
     }
 }
 
 #Preview {
     NavigationStack {
         TasksListScreen()
-            .environmentObject(
-                TasksListViewModel(
-                    repository: TaskRepositoryImpl(
-                        remoteService: TaskRemoteService(),
-                        localService: TaskLocalService()
-                    )
-                )
-            )
+            .environmentObject(TasksListViewModel.sample)
     }
 }

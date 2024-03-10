@@ -27,7 +27,7 @@ struct TaskItem: View {
                     .font(.headline)
                     .strikethrough(showStrikethrough)
                 
-                if let description = task.description {
+                if let description = task.description, task.description.isNotNullNorBlank() {
                     Text(description)
                         .lineLimit(3)
                         .font(.caption)

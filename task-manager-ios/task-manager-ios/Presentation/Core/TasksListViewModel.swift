@@ -46,4 +46,25 @@ class TasksListViewModel: ObservableObject {
         
         state.isLoading = false
     }
+    
+    func editTask(_ task: Task) {
+        state.isLoading = true
+        
+        switch repository.editTask(task) {
+        case .success:
+            state.activeSheet = .constant(nil)
+            getTasks()
+        case .failure(let error):
+            state.error = .constant(error)
+        }
+        
+        state.isLoading = false
+    }
+    
+    static let sample = TasksListViewModel(
+        repository: TaskRepositoryImpl(
+            remoteService: TaskRemoteService(),
+            localService: TaskLocalService()
+        )
+    )
 }
