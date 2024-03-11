@@ -190,7 +190,7 @@ fun AddEditTaskModalBottomSheet(
                             Text(if (type.task.isCompleted) "Restart task" else "Complete task")
                         },
                         onClick = {
-
+                            viewModel.toggleTaskCompletion(type.task)
                         },
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -214,6 +214,7 @@ fun AddEditTaskModalBottomSheet(
                                 Text("Save")
                             },
                             onClick = {
+                                viewModel.editTask(validateTask() ?: return@Button)
                             },
                             modifier = Modifier.weight(1f),
                         )

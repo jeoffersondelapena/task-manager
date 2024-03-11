@@ -90,13 +90,64 @@ class TaskLocalService(context: Context) : BaseService(context) {
         return TaskManagerResult.Success(Unit)
     }
 
-//    fun editTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
-//
-//    }
-//
-//    fun toggleTaskCompletion(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
-//
-//    }
+    fun editTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
+        if (taskLocalDto.id == null) {
+            return TaskManagerResult.Failure(TaskManagerException.FailedToEditTaskException)
+        }
+
+        val contentValues = ContentValues()
+
+        contentValues.apply {
+            put(COLUMN_TITLE, taskLocalDto.title)
+            put(COLUMN_DESCRIPTION, taskLocalDto.description)
+            put(COLUMN_DEADLINE, taskLocalDto.deadline)
+            put(COLUMN_IS_COMPLETED, taskLocalDto.isCompleted)
+        }
+
+        val db = writableDatabase
+
+        val affectedRowsCount = db.update(
+            TABLE_TASK,
+            contentValues,
+            "$COLUMN_ID = ?",
+            arrayOf(taskLocalDto.id.toString())
+        )
+
+        db.close()
+
+        if (affectedRowsCount <= 0) {
+            return TaskManagerResult.Failure(TaskManagerException.FailedToEditTaskException)
+        }
+
+        return TaskManagerResult.Success(Unit)
+    }
+
+    fun toggleTaskCompletion(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
+        if (taskLocalDto.id == null) {
+            return TaskManagerResult.Failure(TaskManagerException.FailedToToggleTaskCompletionException)
+        }
+
+        val contentValues = ContentValues()
+
+        contentValues.put(COLUMN_IS_COMPLETED, !taskLocalDto.isCompleted)
+
+        val db = writableDatabase
+
+        val affectedRowsCount = db.update(
+            TABLE_TASK,
+            contentValues,
+            "$COLUMN_ID = ?",
+            arrayOf(taskLocalDto.id.toString())
+        )
+
+        db.close()
+
+        if (affectedRowsCount <= 0) {
+            return TaskManagerResult.Failure(TaskManagerException.FailedToToggleTaskCompletionException)
+        }
+
+        return TaskManagerResult.Success(Unit)
+    }
 
     fun deleteTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
         val queryString = "DELETE FROM $TABLE_TASK WHERE $COLUMN_ID = ${taskLocalDto.id}"

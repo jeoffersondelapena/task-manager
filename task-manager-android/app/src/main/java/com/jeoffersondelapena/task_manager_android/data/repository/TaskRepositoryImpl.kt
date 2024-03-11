@@ -48,6 +48,22 @@ class TaskRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun editTask(task: Task): TaskManagerResult<Unit, TaskManagerException> {
+        if (/* !hasInternetConnection */ true) {
+            return taskLocalService.editTask(TaskLocalDto.toData(task))
+        } else {
+            return taskRemoteService.editTask(TaskRemoteDto.toData(task))
+        }
+    }
+
+    override fun toggleTaskCompletion(task: Task): TaskManagerResult<Unit, TaskManagerException> {
+        if (/* !hasInternetConnection */ true) {
+            return taskLocalService.toggleTaskCompletion(TaskLocalDto.toData(task))
+        } else {
+            return taskRemoteService.toggleTaskCompletion(TaskRemoteDto.toData(task))
+        }
+    }
+
     override fun deleteTask(task: Task): TaskManagerResult<Unit, TaskManagerException> {
         if (/* !hasInternetConnection */ true) {
             return taskLocalService.deleteTask(TaskLocalDto.toData(task))
