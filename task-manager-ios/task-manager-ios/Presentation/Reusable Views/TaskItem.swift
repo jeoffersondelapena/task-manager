@@ -37,7 +37,7 @@ struct TaskItem: View {
                 }
                 
                 if let deadline = task.deadline {
-                    Text("Deadline: \(DateTimeManager.dateToMmmmDdYyyy(deadline))")
+                    Text("Deadline: \(DateManager.format(date: deadline))")
                         .font(.subheadline)
                         .strikethrough(showStrikethrough)
                 }

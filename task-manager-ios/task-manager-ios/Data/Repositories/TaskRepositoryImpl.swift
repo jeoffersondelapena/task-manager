@@ -40,7 +40,7 @@ class TaskRepositoryImpl: TaskRepository {
         if /* !hasInternetConnection */ true {
             return localService.addTask(TaskLocalDTO.toData(task))
         } else {
-            // Network logic here...
+            return remoteService.addTask(TaskRemoteDTO.toData(task))
         }
     }
     
@@ -48,7 +48,7 @@ class TaskRepositoryImpl: TaskRepository {
         if /* !hasInternetConnection */ true {
             return localService.editTask(TaskLocalDTO.toData(task))
         } else {
-            // Network logic here...
+            return remoteService.editTask(TaskRemoteDTO.toData(task))
         }
     }
     
@@ -56,7 +56,7 @@ class TaskRepositoryImpl: TaskRepository {
         if /* !hasInternetConnection */ true {
             return localService.toggleTaskCompletion(TaskLocalDTO.toData(task))
         } else {
-            // Network logic here...
+            return remoteService.toggleTaskCompletion(TaskRemoteDTO.toData(task))
         }
     }
     
@@ -64,7 +64,7 @@ class TaskRepositoryImpl: TaskRepository {
         if /* !hasInternetConnection */ true {
             return localService.deleteTask(TaskLocalDTO.toData(task))
         } else {
-            // Network logic here...
+            return remoteService.deleteTask(TaskRemoteDTO.toData(task))
         }
     }
     
