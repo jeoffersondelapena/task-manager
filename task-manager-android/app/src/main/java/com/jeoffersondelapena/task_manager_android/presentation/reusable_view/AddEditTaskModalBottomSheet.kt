@@ -228,7 +228,7 @@ fun AddEditTaskModalBottomSheet(
                             containerColor = Color.Red
                         ),
                         onClick = {
-
+                            viewModel.deleteTask(type.task)
                         },
                         modifier = Modifier.weight(1f),
                     )

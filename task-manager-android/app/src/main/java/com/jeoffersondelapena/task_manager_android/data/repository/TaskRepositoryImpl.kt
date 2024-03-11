@@ -48,6 +48,14 @@ class TaskRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun deleteTask(task: Task): TaskManagerResult<Unit, TaskManagerException> {
+        if (/* !hasInternetConnection */ true) {
+            return taskLocalService.deleteTask(TaskLocalDto.toData(task))
+        } else {
+            return taskRemoteService.deleteTask(TaskRemoteDto.toData(task))
+        }
+    }
+
     private fun cacheTasks(taskRemoteDtos: List<TaskRemoteDto>) {
         taskLocalService.addTask(TaskLocalDto.toData(taskRemoteDtos.toDomain()))
     }

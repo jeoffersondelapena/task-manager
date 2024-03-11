@@ -13,6 +13,7 @@ class TaskLocalService(context: Context) : BaseService(context) {
         val taskLocalDtos: MutableList<TaskLocalDto> = mutableListOf()
 
         val queryString = "SELECT * FROM $TABLE_TASK ORDER BY $COLUMN_DEADLINE"
+
         val db = readableDatabase
         val cursor: Cursor = db.rawQuery(queryString, null)
 
@@ -53,9 +54,13 @@ class TaskLocalService(context: Context) : BaseService(context) {
             put(COLUMN_IS_COMPLETED, taskLocalDto.isCompleted)
         }
 
-        if (writableDatabase.insert(TABLE_TASK, null, contentValues) <= 0) {
+        val db = writableDatabase
+
+        if (db.insert(TABLE_TASK, null, contentValues) <= 0) {
             return TaskManagerResult.Failure(TaskManagerException.FailedToAddTaskException)
         }
+
+        db.close()
 
         return TaskManagerResult.Success(Unit)
     }
@@ -64,7 +69,6 @@ class TaskLocalService(context: Context) : BaseService(context) {
         var exception: TaskManagerException? = null
 
         val db = writableDatabase
-
         db.beginTransaction()
 
         try {
@@ -76,10 +80,37 @@ class TaskLocalService(context: Context) : BaseService(context) {
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
+            db.close()
         }
 
         exception?.let {
             return TaskManagerResult.Failure(it)
+        }
+
+        return TaskManagerResult.Success(Unit)
+    }
+
+//    fun editTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
+//
+//    }
+//
+//    fun toggleTaskCompletion(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
+//
+//    }
+
+    fun deleteTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
+        val queryString = "DELETE FROM $TABLE_TASK WHERE $COLUMN_ID = ${taskLocalDto.id}"
+
+        val db = writableDatabase
+        val cursor: Cursor = db.rawQuery(queryString, null)
+
+        val didSucceed = !cursor.moveToFirst()
+
+        cursor.close()
+        db.close()
+
+        if (!didSucceed) {
+            return TaskManagerResult.Failure(TaskManagerException.FailedToDeleteTaskException)
         }
 
         return TaskManagerResult.Success(Unit)
