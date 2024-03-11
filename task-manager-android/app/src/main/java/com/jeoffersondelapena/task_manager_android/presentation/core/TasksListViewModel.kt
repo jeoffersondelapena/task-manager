@@ -1,4 +1,4 @@
-package com.jeoffersondelapena.task_manager_android.presentation.screen.tasks_list_screen
+package com.jeoffersondelapena.task_manager_android.presentation.core
 
 import androidx.lifecycle.ViewModel
 import com.jeoffersondelapena.task_manager_android.data.local.service.TaskLocalService

@@ -1,4 +1,4 @@
-package com.jeoffersondelapena.task_manager_android.presentation.screen.tasks_list_screen
+package com.jeoffersondelapena.task_manager_android.presentation.screen.completed_tasks_list_screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,14 +11,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
 
 @Composable
-fun TasksListScreen(viewModel: TasksListViewModel = viewModel()) {
+fun CompletedTasksListScreen(viewModel: TasksListViewModel = viewModel()) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Tasks List Screen")
+        Text("Completed Tasks List Screen")
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun TasksListScreenPreview() {
-    TasksListScreen(viewModel = TasksListViewModel.sample)
+fun CompletedTasksListScreenPreview() {
+    CompletedTasksListScreen(viewModel = TasksListViewModel.sample)
 }
