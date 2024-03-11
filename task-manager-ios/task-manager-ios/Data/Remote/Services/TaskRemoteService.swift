@@ -9,23 +9,27 @@ import Foundation
 
 class TaskRemoteService {
     func getTasks() -> Result<[TaskRemoteDTO], TaskManagerError> {
-        // let taskRemoteDTOs = Network call here...
-        let taskRemoteDTOs = [
-            TaskRemoteDTO(
-                id: "abc",
-                title: "Dummy title 1",
-                description: "Dummy description",
-                deadline: Date(),
-                isCompleted: true
-            ),
-            TaskRemoteDTO(
-                id: "def",
-                title: "Dummy title 2",
-                description: nil,
-                deadline: nil,
-                isCompleted: false
-            ),
-        ]
-        return .success(taskRemoteDTOs)
+        // Network logic here...
+        return .success([])
+    }
+    
+    func addTask(_ taskRemoteDTO: TaskRemoteDTO) -> Result<Void, TaskManagerError> {
+        // Network logic here...
+        return .success(())
+    }
+    
+    func editTask(_ taskRemoteDTO: TaskRemoteDTO) -> Result<Void, TaskManagerError> {
+        // Network logic here...
+        return .success(())
+    }
+    
+    func toggleTaskCompletion(_ taskRemoteDTO: TaskRemoteDTO) -> Result<Void, TaskManagerError> {
+        // Network logic here...
+        return .success(())
+    }
+    
+    func deleteTask(_ taskRemoteDTO: TaskRemoteDTO) -> Result<Void, TaskManagerError> {
+        // Network logic here...
+        return .success(())
     }
 }
