@@ -2,6 +2,7 @@ package com.jeoffersondelapena.task_manager_android.data.local.service
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import com.jeoffersondelapena.task_manager_android.data.local.dto.TaskLocalDto
 import com.jeoffersondelapena.task_manager_android.data.local.service.base.BaseService
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManagerException
@@ -9,7 +10,30 @@ import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManage
 
 class TaskLocalService(context: Context) : BaseService(context) {
     fun getTasks(): TaskManagerResult<List<TaskLocalDto>, TaskManagerException> {
-        return TaskManagerResult.Success(listOf())
+        val taskLocalDtos: MutableList<TaskLocalDto> = mutableListOf()
+
+        val queryString = "SELECT * FROM $TABLE_TASK ORDER BY $COLUMN_DEADLINE"
+        val db = readableDatabase
+        val cursor: Cursor = db.rawQuery(queryString, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                taskLocalDtos.add(
+                    TaskLocalDto(
+                        id = cursor.getInt(0),
+                        title = cursor.getString(1),
+                        description = cursor.getString(2),
+                        deadline = cursor.getString(3),
+                        isCompleted = cursor.getInt(4) == 1
+                    )
+                )
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return TaskManagerResult.Success(taskLocalDtos)
     }
 
     fun addTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {
