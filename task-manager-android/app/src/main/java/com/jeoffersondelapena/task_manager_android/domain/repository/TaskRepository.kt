@@ -7,4 +7,7 @@ import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManage
 interface TaskRepository {
     fun getTasks(): TaskManagerResult<List<Task>, TaskManagerException>
     fun addTask(task: Task): TaskManagerResult<Unit, TaskManagerException>
+    fun editTask(task: Task): TaskManagerResult<Unit, TaskManagerException>
+    fun toggleTaskCompletion(task: Task): TaskManagerResult<Unit, TaskManagerException>
+    fun deleteTask(task: Task): TaskManagerResult<Unit, TaskManagerException>
 }

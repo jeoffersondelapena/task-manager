@@ -57,6 +57,54 @@ class TasksListViewModel @Inject constructor(
         state.isLoading = false
     }
 
+    fun editTask(task: Task) {
+        state.isLoading = true
+
+        when (val result = repository.editTask(task)) {
+            is TaskManagerResult.Success -> {
+                state.activeModalBottomSheet.value = null
+                getTasks()
+            }
+            is TaskManagerResult.Failure -> {
+                // TODO(jeo)
+            }
+        }
+
+        state.isLoading = false
+    }
+
+    fun toggleTaskCompletion(task: Task) {
+        state.isLoading = true
+
+        when (val result = repository.toggleTaskCompletion(task)) {
+            is TaskManagerResult.Success -> {
+                state.activeModalBottomSheet.value = null
+                getTasks()
+            }
+            is TaskManagerResult.Failure -> {
+                // TODO(jeo)
+            }
+        }
+
+        state.isLoading = false
+    }
+
+    fun deleteTask(task: Task) {
+        state.isLoading = true
+
+        when (val result = repository.deleteTask(task)) {
+            is TaskManagerResult.Success -> {
+                state.activeModalBottomSheet.value = null
+                getTasks()
+            }
+            is TaskManagerResult.Failure -> {
+                // TODO(jeo)
+            }
+        }
+
+        state.isLoading = false
+    }
+
     companion object {
         fun sample(context: Context): TasksListViewModel {
             return TasksListViewModel(

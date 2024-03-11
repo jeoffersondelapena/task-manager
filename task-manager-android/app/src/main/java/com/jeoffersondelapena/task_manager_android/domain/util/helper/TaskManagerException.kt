@@ -11,7 +11,15 @@ sealed class TaskManagerException(message: String) : Exception(message) {
         private fun readResolve(): Any = FailedToAddTaskException
     }
 
-    data object TaskNotFoundException : TaskManagerException("Task not found") {
-        private fun readResolve(): Any = TaskNotFoundException
+    data object FailedToEditTaskException : TaskManagerException("Failed to delete task") {
+        private fun readResolve(): Any = FailedToAddTaskException
+    }
+
+    data object FailedToToggleTaskCompletionException : TaskManagerException("Failed to delete task") {
+        private fun readResolve(): Any = FailedToAddTaskException
+    }
+
+    data object FailedToDeleteTaskException : TaskManagerException("Failed to delete task") {
+        private fun readResolve(): Any = FailedToAddTaskException
     }
 }
