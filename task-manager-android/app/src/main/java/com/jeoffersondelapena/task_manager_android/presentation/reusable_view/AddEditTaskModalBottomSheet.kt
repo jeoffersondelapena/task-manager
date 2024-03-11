@@ -19,18 +19,23 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.DateManager
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListState
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,13 +47,28 @@ fun AddEditTaskModalBottomSheet(
     var title by remember { mutableStateOf("") }
     var titleErrorMessage = ""
 
-    var addDeadline by remember { mutableStateOf(true) }
+    var addDeadline by remember { mutableStateOf(false) }
     var isShowingDatePicker by remember { mutableStateOf(false) }
     var deadline by remember { mutableStateOf(Date()) }
 
     var description by remember { mutableStateOf("") }
 
-    var isEditing by remember { mutableStateOf("") }
+    var isEditing by remember { mutableStateOf(false) }
+
+    val isDisabledTextFields = type is TasksListState.ModalBottomSheetType.Modify && !isEditing
+    val fieldsOpacity = if (isDisabledTextFields) .5f else 1f
+
+    val isDisabledDatePicker = (type is TasksListState.ModalBottomSheetType.Modify && !isEditing) || !addDeadline
+    val datePickerOpacity = if (isDisabledDatePicker) .5f else 1f
+
+    LaunchedEffect(Unit) {
+        if (type is TasksListState.ModalBottomSheetType.Modify) {
+            title = type.task.title
+            addDeadline = type.task.deadline != null
+            deadline = type.task.deadline ?: Date()
+            description = type.task.description ?: ""
+        }
+    }
 
     Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(8.dp)) {
         if (viewModel.state.isLoading) {
@@ -67,21 +87,31 @@ fun AddEditTaskModalBottomSheet(
             onValueChange = { value ->
                 title = value
             },
-            modifier = Modifier.fillMaxWidth(),
+            enabled = !isDisabledTextFields,
+            modifier = Modifier
+                .fillMaxWidth()
+                .alpha(fieldsOpacity),
         )
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.alpha(fieldsOpacity)
+        ) {
             Text("Add deadline", modifier = Modifier.weight(1f))
 
             Switch(
                 checked = addDeadline,
                 onCheckedChange = {
                     addDeadline = it
-                }
+                },
+                enabled = !isDisabledTextFields,
             )
         }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.alpha(datePickerOpacity)
+        ) {
             Text("Deadline", modifier = Modifier.weight(1f))
 
             Button(
@@ -89,8 +119,9 @@ fun AddEditTaskModalBottomSheet(
                     Text(DateManager.format(deadline, DateManager.PRESENTATION_DATE_FORMAT))
                 },
                 onClick = {
-                    isShowingDatePicker = !isShowingDatePicker
-                }
+                    isShowingDatePicker = true
+                },
+                enabled = !isDisabledDatePicker
             )
         }
 
@@ -104,53 +135,76 @@ fun AddEditTaskModalBottomSheet(
             },
             minLines = 5,
             maxLines = 10,
-            modifier = Modifier.fillMaxWidth(),
+            enabled = !isDisabledTextFields,
+            modifier = Modifier
+                .fillMaxWidth()
+                .alpha(fieldsOpacity),
         )
 
-        Button(
-            content = {
-                Text("Save")
-            },
-            onClick = {
+        when (type) {
+            is TasksListState.ModalBottomSheetType.Add -> {
+                Button(
+                    content = {
+                        Text("Save")
+                    },
+                    onClick = {
 
-            },
-            modifier = Modifier.fillMaxWidth(),
-        )
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
 
-        Button(
-            content = {
-                Text("Complete task")
-            },
-            onClick = {
+            is TasksListState.ModalBottomSheetType.Modify -> {
+                if (!isEditing) {
+                    Button(
+                        content = {
+                            Text("Complete task")
+                        },
+                        onClick = {
 
-            },
-            modifier = Modifier.fillMaxWidth(),
-        )
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(
-                content = {
-                    Text("Edit")
-                },
-                onClick = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (!isEditing) {
+                        Button(
+                            content = {
+                                Text("Edit")
+                            },
+                            onClick = {
+                                isEditing = true
+                            },
+                            modifier = Modifier.weight(1f),
+                        )
 
-                },
-                modifier = Modifier.weight(1f),
-            )
+                    } else {
+                        Button(
+                            content = {
+                                Text("Save")
+                            },
+                            onClick = {
+                            },
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
 
-            Button(
-                content = {
-                    Text("Delete")
-                },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.White,
-                    containerColor = Color.Red
-                ),
-                onClick = {
+                    Button(
+                        content = {
+                            Text("Delete")
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            contentColor = Color.White,
+                            containerColor = Color.Red
+                        ),
+                        onClick = {
 
-                },
-                modifier = Modifier.weight(1f),
-            )
+                        },
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+            }
         }
 
         if (isShowingDatePicker) {
