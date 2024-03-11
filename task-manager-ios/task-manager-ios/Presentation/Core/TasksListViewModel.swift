@@ -61,6 +61,20 @@ class TasksListViewModel: ObservableObject {
         state.isLoading = false
     }
     
+    func toggleTaskCompletion(_ task: Task) {
+        state.isLoading = true
+        
+        switch repository.toggleTaskCompletion(task) {
+        case .success:
+            state.activeSheet = .constant(nil)
+            getTasks()
+        case .failure(let error):
+            state.activeAlert = .constant(.error(error))
+        }
+        
+        state.isLoading = false
+    }
+    
     func deleteTask(_ task: Task) {
         state.isLoading = true
         

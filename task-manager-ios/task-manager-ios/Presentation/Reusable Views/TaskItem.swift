@@ -45,7 +45,9 @@ struct TaskItem: View {
             
             Spacer()
             
-            CheckboxView(isChecked: task.isCompleted) {}
+            CheckboxView(isChecked: task.isCompleted) {
+                viewModel.toggleTaskCompletion(task)
+            }
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -56,4 +58,5 @@ struct TaskItem: View {
 
 #Preview {
     TaskItem(task: Task.sample)
+        .environmentObject(TasksListViewModel.sample)
 }
