@@ -11,8 +11,8 @@ import com.jeoffersondelapena.task_manager_android.presentation.screen.tasks_lis
 
 @Composable
 fun BottomNavGraph(
-    navController: NavHostController,
     viewModel: TasksListViewModel,
+    navController: NavHostController,
     modifier: Modifier = Modifier,
     ) {
     NavHost(
