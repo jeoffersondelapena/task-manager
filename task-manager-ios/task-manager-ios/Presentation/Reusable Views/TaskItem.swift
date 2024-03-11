@@ -56,4 +56,5 @@ struct TaskItem: View {
 
 #Preview {
     TaskItem(task: Task.sample)
+        .environmentObject(TasksListViewModel.sample)
 }
