@@ -73,6 +73,24 @@ class TaskLocalService: BaseService {
         }
     }
     
+    func toggleTaskCompletion(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
+        handleErrors {
+            let realm = try Realm()
+            
+            let taskLocalDTOToToggleCompletion = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
+            
+            guard let taskLocalDTOToToggleCompletion = taskLocalDTOToToggleCompletion else {
+                return .failure(.taskNotFound)
+            }
+            
+            try realm.write {
+                taskLocalDTOToToggleCompletion.isCompleted = !taskLocalDTO.isCompleted
+            }
+            
+            return .success(())
+        }
+    }
+    
     func deleteTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
         handleErrors {
             let realm = try Realm()

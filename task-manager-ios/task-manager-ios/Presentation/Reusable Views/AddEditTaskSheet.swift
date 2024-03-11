@@ -110,8 +110,8 @@ struct AddEditTaskSheet: View {
                 
             case .modify(let task):
                 if !isEditing {
-                    Button("Complete task") {
-                        
+                    Button(task.isCompleted ? "Restart task" : "Complete task") {
+                        viewModel.toggleTaskCompletion(task)
                     }
                     .frame(maxWidth: .infinity)
                 }

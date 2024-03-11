@@ -52,6 +52,14 @@ class TaskRepositoryImpl: TaskRepository {
         }
     }
     
+    func toggleTaskCompletion(_ task: Task) -> Result<Void, TaskManagerError> {
+        if /* !hasInternetConnection */ true {
+            return localService.toggleTaskCompletion(TaskLocalDTO.toData(task))
+        } else {
+            // Network logic here...
+        }
+    }
+    
     func deleteTask(_ task: Task) -> Result<Void, TaskManagerError> {
         if /* !hasInternetConnection */ true {
             return localService.deleteTask(TaskLocalDTO.toData(task))

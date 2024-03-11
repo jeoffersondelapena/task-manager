@@ -11,5 +11,6 @@ protocol TaskRepository {
     func getTasks() -> Result<[Task], TaskManagerError>
     func addTask(_ task: Task) -> Result<Void, TaskManagerError>
     func editTask(_ task: Task) -> Result<Void, TaskManagerError>
+    func toggleTaskCompletion(_ task: Task) -> Result<Void, TaskManagerError>
     func deleteTask(_ task: Task) -> Result<Void, TaskManagerError>
 }
