@@ -1,6 +1,10 @@
 package com.jeoffersondelapena.task_manager_android.presentation.core
 
 import android.content.Context
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.jeoffersondelapena.task_manager_android.data.local.dto.toDomain
 import com.jeoffersondelapena.task_manager_android.data.local.service.TaskLocalService
@@ -38,8 +42,19 @@ class TasksListViewModel @Inject constructor(
     }
 
     fun addTask(task: Task) {
-        val result = repository.addTask(task)
-        println("xyz: $result")
+        state.isLoading = true
+
+        when (val result = repository.addTask(task)) {
+            is TaskManagerResult.Success -> {
+                state.activeModalBottomSheet.value = null
+                getTasks()
+            }
+            is TaskManagerResult.Failure -> {
+                // TODO(jeo)
+            }
+        }
+
+        state.isLoading = false
     }
 
     companion object {

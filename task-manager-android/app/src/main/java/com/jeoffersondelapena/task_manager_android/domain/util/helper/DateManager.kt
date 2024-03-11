@@ -6,6 +6,7 @@ import java.util.Locale
 
 object DateManager {
     const val SQLITE_DATE_FORMAT = "yyyy-MM-dd"
+    const val PRESENTATION_DATE_FORMAT = "MMM dd, yyyy"
 
     fun format(date: Date, format: String): String {
         return SimpleDateFormat(format, Locale.getDefault()).format(date)

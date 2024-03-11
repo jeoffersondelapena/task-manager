@@ -33,7 +33,14 @@ class TaskLocalService(context: Context) : BaseService(context) {
         cursor.close()
         db.close()
 
-        return TaskManagerResult.Success(taskLocalDtos)
+        val taskLocalDtosWithDeadline = taskLocalDtos.filter { taskLocalDto ->
+            taskLocalDto.deadline != null
+        }
+        val taskLocalDtosWithoutDeadline = taskLocalDtos.filter { taskLocalDto ->
+            taskLocalDto.deadline == null
+        }
+
+        return TaskManagerResult.Success(taskLocalDtosWithDeadline + taskLocalDtosWithoutDeadline)
     }
 
     fun addTask(taskLocalDto: TaskLocalDto): TaskManagerResult<Unit, TaskManagerException> {

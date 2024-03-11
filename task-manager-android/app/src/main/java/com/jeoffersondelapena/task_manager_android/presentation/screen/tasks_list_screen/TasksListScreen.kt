@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.jeoffersondelapena.task_manager_android.domain.model.Task
+import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListState
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.TaskItem
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.PullRefreshIndicator
@@ -50,15 +51,7 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewModel.addTask(
-                        Task(
-                            id = null,
-                            title = "Hello, SQLite!",
-                            description = null,
-                            deadline = null,
-                            isCompleted = false,
-                        )
-                    )
+                    viewModel.state.activeModalBottomSheet.value = TasksListState.ModalBottomSheetType.Add
                 },
             ) {
                 Icon(Icons.Filled.Add, "Floating action button.")
@@ -87,13 +80,7 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
                 Box(Modifier.pullRefresh(state)) {
                     LazyColumn(Modifier.fillMaxSize()) {
                         items(viewModel.state.tasks) { task ->
-                            TaskItem(task)
-
-//                            ListItem(
-//                                headlineContent = {
-//                                    Text(task.title)
-//                                },
-//                            )
+                            TaskItem(viewModel, task)
                         }
                     }
 
