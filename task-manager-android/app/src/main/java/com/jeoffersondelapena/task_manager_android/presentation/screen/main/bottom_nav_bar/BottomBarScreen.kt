@@ -10,13 +10,13 @@ sealed class BottomBarScreen(
     val title: String,
     val icon: ImageVector,
 ) {
-    object TasksList: BottomBarScreen(
+    data object TasksList: BottomBarScreen(
         route = "tasksList",
         title = "Tasks",
         icon = Icons.Default.List
     )
 
-    object CompletedTasksList: BottomBarScreen(
+    data object CompletedTasksList: BottomBarScreen(
         route = "completedTasksList",
         title = "Completed Tasks",
         icon = Icons.Default.CheckCircle

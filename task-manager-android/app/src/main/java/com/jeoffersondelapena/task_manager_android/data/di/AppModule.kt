@@ -1,10 +1,12 @@
 package com.jeoffersondelapena.task_manager_android.data.di
 
+import android.content.Context
 import com.jeoffersondelapena.task_manager_android.data.local.service.TaskLocalService
 import com.jeoffersondelapena.task_manager_android.data.remote.service.TaskRemoteService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -19,7 +21,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTaskLocalService(): TaskLocalService {
-        return TaskLocalService()
+    fun provideTaskLocalService(@ApplicationContext context: Context): TaskLocalService {
+        return TaskLocalService(context)
     }
 }
