@@ -1,4 +1,4 @@
-package com.jeoffersondelapena.task_manager_android.ui.theme
+package com.jeoffersondelapena.task_manager_android.presentation.res.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
