@@ -1,12 +1,15 @@
 package com.jeoffersondelapena.task_manager_android.presentation.screen.tasks_list_screen
 
+import android.widget.ProgressBar
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -72,18 +75,27 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
 
             val state = rememberPullRefreshState(refreshing, ::refresh)
 
-            Box(Modifier.pullRefresh(state).padding(padding)) {
-                LazyColumn(Modifier.fillMaxSize()) {
-                    items(viewModel.state.tasks) { task ->
-                        ListItem(
-                            headlineContent = {
-                                Text(task.title)
-                            }
-                        )
-                    }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(padding)
+            ) {
+                if (viewModel.state.isLoading) {
+                    CircularProgressIndicator()
                 }
 
-                PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
+                Box(Modifier.pullRefresh(state)) {
+                    LazyColumn(Modifier.fillMaxSize()) {
+                        items(viewModel.state.tasks) { task ->
+                            ListItem(
+                                headlineContent = {
+                                    Text(task.title)
+                                }
+                            )
+                        }
+                    }
+
+                    PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
+                }
             }
         }
     )
