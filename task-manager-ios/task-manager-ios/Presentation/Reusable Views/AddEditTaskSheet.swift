@@ -48,6 +48,14 @@ struct AddEditTaskSheet: View {
         isDisabledDatePicker ? 0.3 : 1
     }
     
+    private var isActiveAlertADeleteConfirmation: Bool {
+        if case .deleteConfirmation = viewModel.state.activeAlert.wrappedValue {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 8) {
             if viewModel.state.isLoading {
@@ -126,7 +134,7 @@ struct AddEditTaskSheet: View {
                     }
                     
                     Button("Delete") {
-                        viewModel.deleteTask(task)
+                        viewModel.state.activeAlert = .constant(.deleteConfirmation(task))
                     }
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.red)
@@ -144,6 +152,23 @@ struct AddEditTaskSheet: View {
             addDeadline = task.deadline != nil
             deadline = task.deadline ?? Date()
             description = task.description ?? ""
+        }
+        .alert(isPresented: .constant(isActiveAlertADeleteConfirmation)) {
+            guard case .deleteConfirmation(let task) = viewModel.state.activeAlert.wrappedValue else {
+                return ErrorAlert.body {
+                    viewModel.state.activeAlert = .constant(nil)
+                }
+            }
+            return Alert(
+                title: Text("Are you sure you want to delete '\(task.title)'?"),
+                message: Text("You cannot undo this action."),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteTask(task)
+                },
+                secondaryButton: .cancel {
+                    viewModel.state.activeAlert = .constant(nil)
+                }
+            )
         }
     }
     

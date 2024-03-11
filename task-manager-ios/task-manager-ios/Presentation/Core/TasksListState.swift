@@ -13,6 +13,11 @@ struct TasksListState {
         case modify(Task)
     }
     
+    enum AlertType {
+        case deleteConfirmation(Task)
+        case error(TaskManagerError)
+    }
+    
     var tasks: [Task] = []
     var completedTasks: [Task] {
         tasks.filter { task in
@@ -23,6 +28,5 @@ struct TasksListState {
     var isLoading = false
     
     var activeSheet: Binding<SheetType?> = .constant(nil)
-    
-    var error: Binding<TaskManagerError?> = .constant(nil)
+    var activeAlert: Binding<AlertType?> = .constant(nil)
 }

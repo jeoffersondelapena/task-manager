@@ -15,6 +15,14 @@ struct ContentView: View {
         )
     )
     
+    private var isActiveAlertAnError: Bool {
+        if case .error = viewModel.state.activeAlert.wrappedValue {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var body: some View {
         TabView {
             NavigationStack {
@@ -53,12 +61,14 @@ struct ContentView: View {
                     .environmentObject(viewModel)
             }
         )
-        .alert(
-            viewModel.state.error.wrappedValue?.description ?? "An error has occurred.",
-            isPresented: .constant(viewModel.state.error.wrappedValue != nil)
-        ) {
-            Button("OK") {
-                viewModel.state.error = .constant(nil)
+        .alert(isPresented: .constant(isActiveAlertAnError)) {
+            guard case .error(let error) = viewModel.state.activeAlert.wrappedValue else {
+                return ErrorAlert.body {
+                    viewModel.state.activeAlert = .constant(nil)
+                }
+            }
+            return ErrorAlert.body(error: error) {
+                viewModel.state.activeAlert = .constant(nil)
             }
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4095590D2B9DC467007B2B6A /* TaskManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095590C2B9DC467007B2B6A /* TaskManagerError.swift */; };
+		4095590F2B9E82C3007B2B6A /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4095590E2B9E82C3007B2B6A /* ErrorAlert.swift */; };
 		40A1CEAA2B9C31E300A7FD17 /* TasksListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */; };
 		40A1CEAE2B9C323E00A7FD17 /* CompletedTasksListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */; };
 		40A1CEB92B9C3AF900A7FD17 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEB82B9C3AF900A7FD17 /* Task.swift */; };
@@ -36,6 +37,7 @@
 		2BB4F20C805A496CD85EA7B0 /* Pods_task_manager_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_task_manager_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9033C3DD2A3EDF46107080 /* Pods-task-manager-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-manager-ios.release.xcconfig"; path = "Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4095590C2B9DC467007B2B6A /* TaskManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerError.swift; sourceTree = "<group>"; };
+		4095590E2B9E82C3007B2B6A /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		40A1CEA92B9C31E300A7FD17 /* TasksListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListScreen.swift; sourceTree = "<group>"; };
 		40A1CEAD2B9C323E00A7FD17 /* CompletedTasksListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksListScreen.swift; sourceTree = "<group>"; };
 		40A1CEB82B9C3AF900A7FD17 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				40A1CED72B9C940900A7FD17 /* CheckboxView.swift */,
 				40A1CED52B9C90F100A7FD17 /* TaskItem.swift */,
 				40A1CEE02B9CBDF400A7FD17 /* AddEditTaskSheet.swift */,
+				4095590E2B9E82C3007B2B6A /* ErrorAlert.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				40A1CECE2B9C523700A7FD17 /* TaskRemoteService.swift in Sources */,
 				40CAEA412B9C121000E6EABD /* ContentView.swift in Sources */,
 				40A1CEBF2B9C3C9700A7FD17 /* TaskRepositoryImpl.swift in Sources */,
+				4095590F2B9E82C3007B2B6A /* ErrorAlert.swift in Sources */,
 				4095590D2B9DC467007B2B6A /* TaskManagerError.swift in Sources */,
 				40A1CEE42B9CEDF900A7FD17 /* String+Extensions.swift in Sources */,
 				40CAEA3F2B9C121000E6EABD /* task_manager_iosApp.swift in Sources */,

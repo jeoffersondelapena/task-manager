@@ -25,7 +25,7 @@ class TasksListViewModel: ObservableObject {
         case .success(let tasks):
             state.tasks = tasks
         case .failure(let error):
-            state.error = .constant(error)
+            state.activeAlert = .constant(.error(error))
         }
         
         if !isFromSwipeRefresh {
@@ -41,7 +41,7 @@ class TasksListViewModel: ObservableObject {
             state.activeSheet = .constant(nil)
             getTasks()
         case .failure(let error):
-            state.error = .constant(error)
+            state.activeAlert = .constant(.error(error))
         }
         
         state.isLoading = false
@@ -55,7 +55,7 @@ class TasksListViewModel: ObservableObject {
             state.activeSheet = .constant(nil)
             getTasks()
         case .failure(let error):
-            state.error = .constant(error)
+            state.activeAlert = .constant(.error(error))
         }
         
         state.isLoading = false
@@ -66,10 +66,11 @@ class TasksListViewModel: ObservableObject {
         
         switch repository.deleteTask(task) {
         case .success:
+            state.activeAlert = .constant(nil)
             state.activeSheet = .constant(nil)
             getTasks()
         case .failure(let error):
-            state.error = .constant(error)
+            state.activeAlert = .constant(.error(error))
         }
         
         state.isLoading = false
