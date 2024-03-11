@@ -1,15 +1,19 @@
 package com.jeoffersondelapena.task_manager_android.presentation.reusable_view
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.jeoffersondelapena.task_manager_android.domain.model.Task
@@ -30,9 +34,10 @@ fun TaskItem(viewModel: TasksListViewModel, task: Task, allowStrikethrough: Bool
                     TasksListState.ModalBottomSheetType.Modify(task)
             }
     ) {
-        Column(Modifier.weight(1f)) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier =  Modifier.weight(1f)) {
             Text(
                 task.title,
+                fontWeight = FontWeight.Bold,
                 style = TextStyle(
                     textDecoration = if (showStrikethrough) TextDecoration.LineThrough else TextDecoration.None
                 ),
@@ -41,6 +46,7 @@ fun TaskItem(viewModel: TasksListViewModel, task: Task, allowStrikethrough: Bool
             task.description?.let { description ->
                 Text(
                     description,
+                    fontWeight = FontWeight.Light,
                     style = TextStyle(
                         textDecoration = if (showStrikethrough) TextDecoration.LineThrough else TextDecoration.None
                     ),
@@ -56,6 +62,8 @@ fun TaskItem(viewModel: TasksListViewModel, task: Task, allowStrikethrough: Bool
                 )
             }
         }
+        
+        Spacer(modifier = Modifier.width(8.dp))
         
         Checkbox(checked = task.isCompleted, onCheckedChange = {})
     }
