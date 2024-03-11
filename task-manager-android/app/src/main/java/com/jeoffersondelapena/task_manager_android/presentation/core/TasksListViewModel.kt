@@ -18,8 +18,10 @@ class TasksListViewModel @Inject constructor(
 ) : ViewModel() {
     val state = TasksListState
 
-    fun getTasks() {
-        state.isLoading = true
+    fun getTasks(isFromSwipeRefresh: Boolean = false) {
+        if (!isFromSwipeRefresh) {
+            state.isLoading = true
+        }
 
         when (val result = repository.getTasks()) {
             is TaskManagerResult.Success -> {
@@ -30,7 +32,9 @@ class TasksListViewModel @Inject constructor(
             }
         }
 
-        state.isLoading = false
+        if (!isFromSwipeRefresh) {
+            state.isLoading = false
+        }
     }
 
     fun addTask(task: Task) {
