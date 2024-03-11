@@ -18,14 +18,15 @@ fun MainScreen(viewModel: TasksListViewModel = viewModel()) {
     viewModel.getTasks()
 
     Scaffold(
-        bottomBar = { BottomBar(navController = navController) }
-    ) { padding ->
-        BottomNavGraph(
-            navController = navController,
-            viewModel = viewModel,
-            modifier = Modifier.padding(padding)
-        )
-    }
+        bottomBar = { BottomBar(navController = navController) },
+        content = { padding ->
+            BottomNavGraph(
+                navController = navController,
+                viewModel = viewModel,
+                modifier = Modifier.padding(padding)
+            )
+        }
+    )
 }
 
 @Preview(showBackground = true)
