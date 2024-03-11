@@ -68,7 +68,7 @@ fun CompletedTasksListScreen(viewModel: TasksListViewModel) {
                 Box(Modifier.pullRefresh(state)) {
                     LazyColumn(Modifier.fillMaxSize()) {
                         items(viewModel.state.completedTasks) { task ->
-                            TaskItem(viewModel, task)
+                            TaskItem(viewModel, task, allowStrikethrough = false)
                         }
                     }
 
