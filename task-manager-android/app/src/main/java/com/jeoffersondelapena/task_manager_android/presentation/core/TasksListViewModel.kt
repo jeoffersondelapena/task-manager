@@ -42,8 +42,19 @@ class TasksListViewModel @Inject constructor(
     }
 
     fun addTask(task: Task) {
-        val result = repository.addTask(task)
-        println("xyz: $result")
+        state.isLoading = true
+
+        when (val result = repository.addTask(task)) {
+            is TaskManagerResult.Success -> {
+                state.activeModalBottomSheet.value = null
+                getTasks()
+            }
+            is TaskManagerResult.Failure -> {
+                // TODO(jeo)
+            }
+        }
+
+        state.isLoading = false
     }
 
     companion object {

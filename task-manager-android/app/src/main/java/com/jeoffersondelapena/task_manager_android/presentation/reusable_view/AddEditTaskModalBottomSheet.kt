@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
+import com.jeoffersondelapena.task_manager_android.domain.model.Task
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.DateManager
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListState
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
@@ -45,7 +46,7 @@ fun AddEditTaskModalBottomSheet(
     type: TasksListState.ModalBottomSheetType
 ) {
     var title by remember { mutableStateOf("") }
-    var titleErrorMessage = ""
+    var titleErrorMessage by remember { mutableStateOf("") }
 
     var addDeadline by remember { mutableStateOf(false) }
     var isShowingDatePicker by remember { mutableStateOf(false) }
@@ -70,6 +71,33 @@ fun AddEditTaskModalBottomSheet(
         }
     }
 
+    fun validateTask(): Task? {
+        if (title.isBlank()) {
+            titleErrorMessage = "Title should not be blank"
+            return null
+        }
+        when (type) {
+            is TasksListState.ModalBottomSheetType.Add -> {
+                return Task(
+                    id = null,
+                    title = title,
+                    description =  if (description.isBlank()) null else description,
+                    deadline = if (!addDeadline) null else deadline,
+                    isCompleted = false,
+                )
+            }
+            is TasksListState.ModalBottomSheetType.Modify -> {
+                return Task(
+                    id = type.task.id,
+                    title = title,
+                    description =  if (description.isBlank()) null else description,
+                    deadline = if (!addDeadline) null else deadline,
+                    isCompleted = type.task.isCompleted,
+                )
+            }
+        }
+    }
+
     Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(8.dp)) {
         if (viewModel.state.isLoading) {
             CircularProgressIndicator()
@@ -86,6 +114,7 @@ fun AddEditTaskModalBottomSheet(
             isError = titleErrorMessage.isNotBlank(),
             onValueChange = { value ->
                 title = value
+                titleErrorMessage = ""
             },
             enabled = !isDisabledTextFields,
             modifier = Modifier
@@ -148,7 +177,7 @@ fun AddEditTaskModalBottomSheet(
                         Text("Save")
                     },
                     onClick = {
-
+                        viewModel.addTask(validateTask() ?: return@Button)
                     },
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -158,7 +187,7 @@ fun AddEditTaskModalBottomSheet(
                 if (!isEditing) {
                     Button(
                         content = {
-                            Text("Complete task")
+                            Text(if (type.task.isCompleted) "Restart task" else "Complete task")
                         },
                         onClick = {
 
