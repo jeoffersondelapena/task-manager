@@ -28,4 +28,29 @@ class TaskLocalService(context: Context) : BaseService(context) {
 
         return TaskManagerResult.Success(Unit)
     }
+
+    fun addTask(taskLocalDtos: List<TaskLocalDto>): TaskManagerResult<Unit, TaskManagerException> {
+        var exception: TaskManagerException? = null
+
+        val db = writableDatabase
+
+        db.beginTransaction()
+
+        try {
+            taskLocalDtos.forEach { taskLocalDto ->
+                if (addTask(taskLocalDto) is TaskManagerResult.Failure) {
+                    exception = TaskManagerException.FailedToAddTaskException
+                }
+            }
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
+
+        exception?.let {
+            return TaskManagerResult.Failure(it)
+        }
+
+        return TaskManagerResult.Success(Unit)
+    }
 }

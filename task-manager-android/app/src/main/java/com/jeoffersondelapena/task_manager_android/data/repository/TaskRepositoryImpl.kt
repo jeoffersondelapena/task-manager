@@ -49,6 +49,6 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     private fun cacheTasks(taskRemoteDtos: List<TaskRemoteDto>) {
-
+        taskLocalService.addTask(TaskLocalDto.toData(taskRemoteDtos.toDomain()))
     }
 }
