@@ -22,7 +22,7 @@ fun CompletedTasksListScreen(viewModel: TasksListViewModel) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Completed Tasks List")
+                    Text("Completed Tasks List")
                 }
             )
         },

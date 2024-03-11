@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.jeoffersondelapena.task_manager_android.domain.model.Task
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.TaskItem
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.PullRefreshIndicator
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.pullRefresh
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.rememberPullRefreshState
@@ -42,7 +43,7 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Tasks List")
+                    Text("Tasks List")
                 }
             )
         },
@@ -86,11 +87,13 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
                 Box(Modifier.pullRefresh(state)) {
                     LazyColumn(Modifier.fillMaxSize()) {
                         items(viewModel.state.tasks) { task ->
-                            ListItem(
-                                headlineContent = {
-                                    Text(task.title)
-                                }
-                            )
+                            TaskItem(task)
+
+//                            ListItem(
+//                                headlineContent = {
+//                                    Text(task.title)
+//                                },
+//                            )
                         }
                     }
 
