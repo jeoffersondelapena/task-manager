@@ -21,10 +21,6 @@ struct TasksListScreen: View {
             } else {
                 List(viewModel.state.tasks) { task in
                     TaskItem(task: task)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            viewModel.state.activeSheet = .constant(.modify(task))
-                        }
                 }
                 .refreshable {
                     viewModel.getTasks(isFromSwipeRefresh: true)

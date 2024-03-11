@@ -10,7 +10,7 @@ import RealmSwift
 
 class TaskLocalService: BaseService {
     func getTasks() -> Result<[TaskLocalDTO], TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let taskLocalDTOs = Array((try Realm()).objects(TaskLocalDTO.self).sorted(by: \.deadline))
             
             let taskLocalDTOsWithDeadline = taskLocalDTOs.filter { taskLocalDTO in
@@ -25,7 +25,7 @@ class TaskLocalService: BaseService {
     }
     
     func addTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let realm = try Realm()
             
             try realm.write {
@@ -53,20 +53,38 @@ class TaskLocalService: BaseService {
     }
     
     func editTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
-        serviceCall {
+        handleErrors {
             let realm = try Realm()
             
-            let taskLocalDTOToUpdate = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
+            let taskLocalDTOToEdit = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
             
-            guard let taskLocalDTOToUpdate = taskLocalDTOToUpdate else {
+            guard let taskLocalDTOToEdit = taskLocalDTOToEdit else {
                 return .failure(.taskNotFound)
             }
             
             try realm.write {
-                taskLocalDTOToUpdate.title = taskLocalDTO.title
-                taskLocalDTOToUpdate.desc = taskLocalDTO.desc
-                taskLocalDTOToUpdate.deadline = taskLocalDTO.deadline
-                taskLocalDTOToUpdate.isCompleted = taskLocalDTO.isCompleted
+                taskLocalDTOToEdit.title = taskLocalDTO.title
+                taskLocalDTOToEdit.desc = taskLocalDTO.desc
+                taskLocalDTOToEdit.deadline = taskLocalDTO.deadline
+                taskLocalDTOToEdit.isCompleted = taskLocalDTO.isCompleted
+            }
+            
+            return .success(())
+        }
+    }
+    
+    func deleteTask(_ taskLocalDTO: TaskLocalDTO) -> Result<Void, TaskManagerError> {
+        handleErrors {
+            let realm = try Realm()
+            
+            let taskLocalDTOToDelete = realm.object(ofType: TaskLocalDTO.self, forPrimaryKey: taskLocalDTO._id)
+            
+            guard let taskLocalDTOToDelete = taskLocalDTOToDelete else {
+                return .failure(.taskNotFound)
+            }
+            
+            try realm.write {
+                realm.delete(taskLocalDTOToDelete)
             }
             
             return .success(())
