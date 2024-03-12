@@ -66,22 +66,27 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
 
             val state = rememberPullRefreshState(refreshing, ::refresh)
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(padding)
-            ) {
+            Column(modifier = Modifier.padding(padding)) {
                 if (viewModel.state.isLoading) {
-                    CircularProgressIndicator()
-                }
-
-                Box(Modifier.pullRefresh(state)) {
-                    LazyColumn(Modifier.fillMaxSize()) {
-                        items(viewModel.state.tasks.value) { task ->
-                            TaskItem(viewModel, task)
-                        }
+                    Box(contentAlignment = Alignment.Center, modifier =  Modifier.fillMaxSize()) {
+                        CircularProgressIndicator()
                     }
 
-                    PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
+                } else if (viewModel.state.tasks.value.isEmpty()) {
+                    Box(contentAlignment = Alignment.Center, modifier =  Modifier.fillMaxSize()) {
+                        Text("No tasks yet")
+                    }
+
+                } else {
+                    Box(Modifier.pullRefresh(state)) {
+                        LazyColumn(Modifier.fillMaxSize()) {
+                            items(viewModel.state.tasks.value) { task ->
+                                TaskItem(viewModel, task)
+                            }
+                        }
+
+                        PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
+                    }
                 }
             }
         }
