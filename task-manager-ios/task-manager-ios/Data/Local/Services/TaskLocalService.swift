@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class TaskLocalService: BaseService {
+class TaskLocalService: BaseLocalService {
     func getTasks() -> Result<[TaskLocalDTO], TaskManagerError> {
         handleErrors {
             let taskLocalDTOs = Array((try Realm()).objects(TaskLocalDTO.self).sorted(by: \.deadline))
