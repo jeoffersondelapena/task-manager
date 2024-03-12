@@ -57,7 +57,7 @@ fun CompletedTasksListScreen(viewModel: TasksListViewModel) {
                         CircularProgressIndicator()
                     }
 
-                } else if (viewModel.state.tasks.value.isEmpty()) {
+                } else if (viewModel.state.completedTasks.isEmpty()) {
                     Box(contentAlignment = Alignment.Center, modifier =  Modifier.fillMaxSize()) {
                         Text("No completed tasks yet")
                     }
