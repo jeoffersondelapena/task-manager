@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-task-manager-ios/Pods-task-manager-ios-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
