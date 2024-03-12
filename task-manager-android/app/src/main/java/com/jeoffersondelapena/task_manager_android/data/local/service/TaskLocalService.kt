@@ -4,11 +4,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import com.jeoffersondelapena.task_manager_android.data.local.dto.TaskLocalDto
-import com.jeoffersondelapena.task_manager_android.data.local.service.base.BaseService
+import com.jeoffersondelapena.task_manager_android.data.local.service.base.BaseLocalService
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManagerException
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManagerResult
 
-class TaskLocalService(context: Context) : BaseService(context) {
+class TaskLocalService(context: Context) : BaseLocalService(context) {
     fun getTasks(): TaskManagerResult<List<TaskLocalDto>, TaskManagerException> {
         val taskLocalDtos: MutableList<TaskLocalDto> = mutableListOf()
 

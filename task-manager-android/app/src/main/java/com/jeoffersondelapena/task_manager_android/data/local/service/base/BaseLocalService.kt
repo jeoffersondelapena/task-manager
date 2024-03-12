@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-open class BaseService(context: Context) : SQLiteOpenHelper(
+open class BaseLocalService(context: Context) : SQLiteOpenHelper(
     context,
     "task_manager.db",
     null,

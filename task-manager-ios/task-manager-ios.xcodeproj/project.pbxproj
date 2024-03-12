@@ -19,7 +19,7 @@
 		40A1CEC82B9C478700A7FD17 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */; };
 		40A1CECC2B9C515000A7FD17 /* TaskRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */; };
 		40A1CECE2B9C523700A7FD17 /* TaskRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */; };
-		40A1CED12B9C840C00A7FD17 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED02B9C840C00A7FD17 /* BaseService.swift */; };
+		40A1CED12B9C840C00A7FD17 /* BaseLocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED02B9C840C00A7FD17 /* BaseLocalService.swift */; };
 		40A1CED62B9C90F100A7FD17 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED52B9C90F100A7FD17 /* TaskItem.swift */; };
 		40A1CED82B9C940900A7FD17 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CED72B9C940900A7FD17 /* CheckboxView.swift */; };
 		40A1CEDC2B9C988F00A7FD17 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1CEDB2B9C988F00A7FD17 /* DateManager.swift */; };
@@ -48,7 +48,7 @@
 		40A1CEC72B9C478700A7FD17 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		40A1CECB2B9C515000A7FD17 /* TaskRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteDTO.swift; sourceTree = "<group>"; };
 		40A1CECD2B9C523700A7FD17 /* TaskRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemoteService.swift; sourceTree = "<group>"; };
-		40A1CED02B9C840C00A7FD17 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		40A1CED02B9C840C00A7FD17 /* BaseLocalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalService.swift; sourceTree = "<group>"; };
 		40A1CED52B9C90F100A7FD17 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		40A1CED72B9C940900A7FD17 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		40A1CEDB2B9C988F00A7FD17 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		40A1CECF2B9C840000A7FD17 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				40A1CED02B9C840C00A7FD17 /* BaseService.swift */,
+				40A1CED02B9C840C00A7FD17 /* BaseLocalService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -451,7 +451,7 @@
 				40A1CEC12B9C3D8500A7FD17 /* TaskLocalService.swift in Sources */,
 				40A1CEBD2B9C3C3C00A7FD17 /* TaskRepository.swift in Sources */,
 				40A1CEDC2B9C988F00A7FD17 /* DateManager.swift in Sources */,
-				40A1CED12B9C840C00A7FD17 /* BaseService.swift in Sources */,
+				40A1CED12B9C840C00A7FD17 /* BaseLocalService.swift in Sources */,
 				40A1CEC32B9C3DBC00A7FD17 /* TaskLocalDTO.swift in Sources */,
 				40A1CEAE2B9C323E00A7FD17 /* CompletedTasksListScreen.swift in Sources */,
 				40A1CEAA2B9C31E300A7FD17 /* TasksListScreen.swift in Sources */,
