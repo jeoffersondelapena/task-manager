@@ -5,15 +5,15 @@ sealed class TaskManagerException(message: String) : Exception(message) {
         private fun readResolve(): Any = FailedToAddTaskException
     }
 
-    data object FailedToEditTaskException : TaskManagerException("Failed to delete task") {
-        private fun readResolve(): Any = FailedToAddTaskException
+    data object FailedToEditTaskException : TaskManagerException("Failed to edit task") {
+        private fun readResolve(): Any = FailedToEditTaskException
     }
 
-    data object FailedToToggleTaskCompletionException : TaskManagerException("Failed to delete task") {
-        private fun readResolve(): Any = FailedToAddTaskException
+    data object FailedToToggleTaskCompletionException : TaskManagerException("Failed to toggle task completion") {
+        private fun readResolve(): Any = FailedToToggleTaskCompletionException
     }
 
     data object FailedToDeleteTaskException : TaskManagerException("Failed to delete task") {
-        private fun readResolve(): Any = FailedToAddTaskException
+        private fun readResolve(): Any = FailedToDeleteTaskException
     }
 }
