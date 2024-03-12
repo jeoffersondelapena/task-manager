@@ -29,7 +29,7 @@ class TasksListViewModel @Inject constructor(
 
         when (val result = repository.getTasks()) {
             is TaskManagerResult.Success -> {
-                state.tasks = result.value
+                state.tasks.value = result.value
             }
             is TaskManagerResult.Failure -> {
                 // TODO(jeo)

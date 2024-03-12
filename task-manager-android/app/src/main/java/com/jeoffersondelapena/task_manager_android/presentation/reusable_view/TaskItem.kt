@@ -65,6 +65,11 @@ fun TaskItem(viewModel: TasksListViewModel, task: Task, allowStrikethrough: Bool
         
         Spacer(modifier = Modifier.width(8.dp))
         
-        Checkbox(checked = task.isCompleted, onCheckedChange = {})
+        Checkbox(
+            checked = task.isCompleted,
+            onCheckedChange = {
+                viewModel.toggleTaskCompletion(task)
+            }
+        )
     }
 }

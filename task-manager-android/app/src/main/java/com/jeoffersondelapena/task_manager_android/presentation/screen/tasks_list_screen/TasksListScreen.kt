@@ -79,7 +79,7 @@ fun TasksListScreen(viewModel: TasksListViewModel) {
 
                 Box(Modifier.pullRefresh(state)) {
                     LazyColumn(Modifier.fillMaxSize()) {
-                        items(viewModel.state.tasks) { task ->
+                        items(viewModel.state.tasks.value) { task ->
                             TaskItem(viewModel, task)
                         }
                     }

@@ -11,10 +11,10 @@ object TasksListState {
         data class Modify(val task: Task) : ModalBottomSheetType()
     }
 
-    var tasks: List<Task> = listOf()
+    var tasks: MutableState<List<Task>> = mutableStateOf(listOf())
     val completedTasks: List<Task>
         get() {
-            return tasks.filter { task ->
+            return tasks.value.filter { task ->
                 task.isCompleted
             }
         }
