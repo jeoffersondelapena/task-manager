@@ -1,4 +1,4 @@
-package com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh
+package com.jeoffersondelapena.task_manager_android.presentation.reusable_view.pull_refresh
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.surfaceColorAtElevation

@@ -17,7 +17,7 @@ fun AppDatePicker(initialDate: Date, onSelectDate: (Date) -> Unit) {
         },
         update = { views ->
             views.date = initialDate.time
-            views.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+            views.setOnDateChangeListener { _, year, month, dayOfMonth ->
                 onSelectDate(
                     Date.from(
                         LocalDate

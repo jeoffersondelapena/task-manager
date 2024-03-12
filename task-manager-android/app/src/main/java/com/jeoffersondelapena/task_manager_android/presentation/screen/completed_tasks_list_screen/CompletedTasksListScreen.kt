@@ -23,9 +23,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.TaskItem
-import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.PullRefreshIndicator
-import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.pullRefresh
-import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh.rememberPullRefreshState
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.pull_refresh.PullRefreshIndicator
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.pull_refresh.pullRefresh
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.pull_refresh.rememberPullRefreshState
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
