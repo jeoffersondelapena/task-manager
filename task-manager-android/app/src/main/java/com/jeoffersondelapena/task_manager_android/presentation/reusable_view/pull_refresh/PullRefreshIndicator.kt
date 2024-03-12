@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jeoffersondelapena.task_manager_android.presentation.reusable_view.swipe_refresh
+package com.jeoffersondelapena.task_manager_android.presentation.reusable_view.pull_refresh
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.LinearEasing
