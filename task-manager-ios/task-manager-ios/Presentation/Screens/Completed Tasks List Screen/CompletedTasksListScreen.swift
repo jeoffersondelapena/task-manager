@@ -15,7 +15,7 @@ struct CompletedTasksListScreen: View {
             if viewModel.state.isLoading {
                 ProgressView()
                 
-            } else if viewModel.state.tasks.isEmpty  {
+            } else if viewModel.state.completedTasks.isEmpty  {
                 Text("No completed tasks yet")
                 
             } else {
