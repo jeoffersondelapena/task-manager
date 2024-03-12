@@ -229,7 +229,7 @@ fun AddEditTaskModalBottomSheet(
                             containerColor = Color.Red
                         ),
                         onClick = {
-                            viewModel.deleteTask(type.task)
+                            viewModel.state.activeDialog.value = TasksListState.DialogType.DeleteConfirmation(type.task)
                         },
                         modifier = Modifier.weight(1f),
                     )
