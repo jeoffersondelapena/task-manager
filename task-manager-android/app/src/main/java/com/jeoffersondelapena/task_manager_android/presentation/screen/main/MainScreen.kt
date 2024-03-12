@@ -23,6 +23,8 @@ import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListSt
 import com.jeoffersondelapena.task_manager_android.presentation.core.TasksListViewModel
 import com.jeoffersondelapena.task_manager_android.presentation.res.ui.theme.TaskmanagerandroidTheme
 import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.AddEditTaskModalBottomSheet
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.dialog.DeleteConfirmationDialog
+import com.jeoffersondelapena.task_manager_android.presentation.reusable_view.dialog.ErrorDialog
 import com.jeoffersondelapena.task_manager_android.presentation.screen.main.bottom_nav_bar.BottomBar
 import com.jeoffersondelapena.task_manager_android.presentation.screen.main.bottom_nav_bar.BottomNavGraph
 import kotlinx.coroutines.launch
@@ -59,16 +61,24 @@ fun MainScreen(viewModel: TasksListViewModel = viewModel()) {
                         type = viewModel.state.activeModalBottomSheet.value
                             ?: TasksListState.ModalBottomSheetType.Add
                     )
-//                    Button(onClick = {
-//                        scope.launch { sheetState.hide() }.invokeOnCompletion {
-//                            if (!sheetState.isVisible) {
-//                                viewModel.state.activeModalBottomSheet.value = null
-//                            }
-//                        }
-//                    }) {
-//                        Text("Hide bottom sheet")
-//                    }
                 }
+            }
+
+            when (val dialog = viewModel.state.activeDialog.value) {
+                is TasksListState.DialogType.DeleteConfirmation -> {
+                    DeleteConfirmationDialog(
+                        onDismissRequest = { viewModel.state.activeDialog.value = null },
+                        onConfirmation = { viewModel.deleteTask(dialog.task) },
+                        task = dialog.task,
+                    )
+                }
+                is TasksListState.DialogType.Error -> {
+                    ErrorDialog(
+                        onDismissRequest = { viewModel.state.activeDialog.value = null },
+                        dialogTitle = dialog.exception.message,
+                    )
+                }
+                else -> {}
             }
         }
     )
