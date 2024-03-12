@@ -12,6 +12,7 @@ import com.jeoffersondelapena.task_manager_android.data.remote.service.TaskRemot
 import com.jeoffersondelapena.task_manager_android.data.repository.TaskRepositoryImpl
 import com.jeoffersondelapena.task_manager_android.domain.model.Task
 import com.jeoffersondelapena.task_manager_android.domain.repository.TaskRepository
+import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManagerException
 import com.jeoffersondelapena.task_manager_android.domain.util.helper.TaskManagerResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class TasksListViewModel @Inject constructor(
                 state.tasks.value = result.value
             }
             is TaskManagerResult.Failure -> {
-                // TODO(jeo)
+                state.activeDialog.value = TasksListState.DialogType.Error(result.exception)
             }
         }
 
@@ -50,7 +51,7 @@ class TasksListViewModel @Inject constructor(
                 getTasks()
             }
             is TaskManagerResult.Failure -> {
-                // TODO(jeo)
+                state.activeDialog.value = TasksListState.DialogType.Error(result.exception)
             }
         }
 
@@ -66,7 +67,7 @@ class TasksListViewModel @Inject constructor(
                 getTasks()
             }
             is TaskManagerResult.Failure -> {
-                // TODO(jeo)
+                state.activeDialog.value = TasksListState.DialogType.Error(result.exception)
             }
         }
 
@@ -82,7 +83,7 @@ class TasksListViewModel @Inject constructor(
                 getTasks()
             }
             is TaskManagerResult.Failure -> {
-                // TODO(jeo)
+                state.activeDialog.value = TasksListState.DialogType.Error(result.exception)
             }
         }
 
@@ -94,11 +95,12 @@ class TasksListViewModel @Inject constructor(
 
         when (val result = repository.deleteTask(task)) {
             is TaskManagerResult.Success -> {
+                state.activeDialog.value = null
                 state.activeModalBottomSheet.value = null
                 getTasks()
             }
             is TaskManagerResult.Failure -> {
-                // TODO(jeo)
+                state.activeDialog.value = TasksListState.DialogType.Error(result.exception)
             }
         }
 
